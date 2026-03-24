@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color backgroundColor =
-      Color.fromRGBO(24, 24, 32, 1); //light black
+  static const Color backgroundColor = Color.fromRGBO(24, 24, 32, 1); //light black
   
-  static const Color blueShade1 = Color(0xFF1B1A54);
-  static const Color blueShade2 = Color(0xFF525C91);
+  static const Color blueShadeButtonColor = Color(0xFF675DB4);
+  static const Color blueShadeText = Color(0xFF4F449A);
   static const Color blueShade3 = Color(0xFF9290C2);
+  static const Color blackText = Color(0xFF474551);
   
   static const Color unlineColor = Colors.greenAccent;
   static const Color greenPallet = Color(0xFF06D6A0);

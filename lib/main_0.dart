@@ -1,87 +1,76 @@
-import 'package:flutter/material.dart';
-import 'package:recepieapp/Theme/app_colors.dart';
-import 'package:recepieapp/Theme/app_theme.dart';
+// import 'package:flutter/foundation.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:hive_flutter/hive_flutter.dart';
+// import 'package:logger/logger.dart';
+// import 'package:recepieapp/Theme/app_theme.dart';
+// import 'package:recepieapp/feature/auth/provider/authentication.dart';
+// import 'package:recepieapp/utils/routes/route_generator.dart';
+// import 'package:recepieapp/utils/routes/routes.dart';
+// import 'Service/bloc_objserver.dart';
+// import 'feature/auth/domain/repositories/auth_repository.dart';
+// import 'feature/auth/presentation/controllers/loginBloc/login_bloc.dart';
+// import 'feature/auth/presentation/controllers/signupBloc/signup_bloc.dart';
+// import 'utils/widgets/snackbar/custom_snack_bar.dart' show CustomSnackBar;
 
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      home: const MyHome(),
-    );
-  }
-}
+// var logger = Logger();
+// // void main() async {
+// //   if (kDebugMode) {
+// //     Bloc.observer = SimpleBlocObserver();
+// //     logger.f("BLoC debugging Activated!!"); // Shown only in dev
+// //   }
+// //   WidgetsFlutterBinding.ensureInitialized();
+// //   //await dotenv.load(); // for app
+// //   // await dotenv.load(fileName: "assets/.env"); //for web+app
+// //   await Hive.initFlutter();
+// //   await Hive.openBox(AuthService.authBoxName);
 
-class MyHome extends StatefulWidget {
-  const MyHome({super.key});
+// //   await SystemChrome.setPreferredOrientations([
+// //     DeviceOrientation.portraitUp,
+// //     DeviceOrientation.portraitDown,
+// //   ]);
+// void main(){
 
-  @override
-  State<MyHome> createState() => _MyHomeState();
-}
+//   runApp(
+//   //   MultiBlocProvider(
+//   //     providers: [
+//   //       BlocProvider(
+//   //         create:
+//   //             (context) => LoginBloc(
+//   //               AuthRepository(AuthApi()),
+//   //               context.read<AuthService>(),
+//   //               context.read<UserService>(),
+//   //             ),
+//   //       ),
+//   //       BlocProvider(
+//   //         create: (context) => SignUpBloc(AuthRepository(AuthApi())),
+//   //       ),
 
-class _MyHomeState extends State<MyHome> {
-  int counter = 0;
-  void incrementCounter() {
-    setState(() {
-      counter = counter + 1;
-    });
-  }
+//   //     ],
+//   //     child: const MyApp(),
+//   //   ),
+//   const MyApp()
+//   );
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      appBar: AppBar(
-        title: Text(
-          "Recepie App",
-          style: Theme.of(context).textTheme.displayLarge
-        ),
-        centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: const EdgeInsets.all(20),
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.deepPurple,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    "Chicken Biryani",
-                    style: Theme.of(context).textTheme.displayMedium!.copyWith(color: Colors.white),
-                  ),
-                  const Text(
-                    "You have pressed the button this times",
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                  Text(
-                    "$counter",
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.pink.shade100,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => incrementCounter(),
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-}
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // final token = context.read<AuthService>().state;
+//     // logger.i("Initial Token: $token");
+    
+//     return MaterialApp(
+//       scaffoldMessengerKey: CustomSnackBar.scaffoldMessengerKey,
+//       theme: AppTheme.lightTheme,
+//       debugShowCheckedModeBanner: false,
+//       initialRoute: Routes.initial,
+//       onGenerateRoute: RouteGenerator.generateRoute,
+//     );
+//   }
+// }

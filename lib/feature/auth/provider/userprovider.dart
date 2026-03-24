@@ -1,7 +1,7 @@
 import 'dart:convert';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:bloc/bloc.dart';
-import 'package:nirals/feature/auth/domain/models/auth_model.dart';
+import 'package:recepieapp/feature/auth/domain/models/auth_model.dart';
 
 class UserService extends Cubit<LoginResponse?> {
   static const String _authBoxName = 'authBox';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/login_page.dart';
 
 import '../error/screen.dart';
 import 'routes.dart';
@@ -6,14 +7,14 @@ import 'routes.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.initial:
-        return MaterialPageRoute(builder: (_) => const InitialSplashScreen());
+      // case Routes.initial:
+      // return MaterialPageRoute(builder: (_) => const InitialSplashScreen());
       case Routes.login:
         return MaterialPageRoute(builder: (_) => const SignIn());
-      case Routes.signup:
-        return MaterialPageRoute(builder: (_) => const SignUp());
-      case Routes.bottomNav:
-        return MaterialPageRoute(builder: (_) => const MyNavigationBar());
+      // case Routes.signup:
+      //   return MaterialPageRoute(builder: (_) => const SignUp());
+      // case Routes.bottomNav:
+      //   return MaterialPageRoute(builder: (_) => const MyNavigationBar());
       default:
         return _errorRoute();
     }
