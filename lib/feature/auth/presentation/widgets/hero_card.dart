@@ -9,7 +9,6 @@ class HeroCard extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        // Main white card
         Container(
           width: double.infinity,
           height: 200,
@@ -59,6 +58,7 @@ class HeroCard extends StatelessWidget {
                         opacity: 0.6,
                         child: Image.asset(
                           AppImages.loginCard,
+                          // '',
                           fit: BoxFit.cover,
                           errorBuilder: (_, _, _) => const Icon(
                             Icons.spa_outlined,

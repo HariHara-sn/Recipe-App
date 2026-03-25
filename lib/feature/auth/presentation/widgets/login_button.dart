@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/utils/routes/routes.dart';
 
 class LoginButton extends StatelessWidget {
   final TextTheme tt;
@@ -11,7 +12,9 @@ class LoginButton extends StatelessWidget {
       width: double.infinity,
       height: 60,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, Routes.bottomNav);
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFF3D3A8C),
           foregroundColor: Colors.white,
