@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/feature/Home/home_page.dart';
 import 'package:recepieapp/login_page.dart';
 
 import '../error/screen.dart';
@@ -11,6 +12,8 @@ class RouteGenerator {
       // return MaterialPageRoute(builder: (_) => const InitialSplashScreen());
       case Routes.login:
         return MaterialPageRoute(builder: (_) => const SignIn());
+      case Routes.home:
+        return MaterialPageRoute(builder: (_) => const HomePage());
       // case Routes.signup:
       //   return MaterialPageRoute(builder: (_) => const SignUp());
       // case Routes.bottomNav:

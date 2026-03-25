@@ -7,7 +7,7 @@ class AppColors {
   static const Color blueShadeText = Color(0xFF4F449A);
   static const Color blueShade3 = Color(0xFF9290C2);
   static const Color blackText = Color(0xFF474551);
-  
+  static const softlavenderWhiteBackground = Color(0xFFF0EFFA);
   static const Color unlineColor = Colors.greenAccent;
   static const Color greenPallet = Color(0xFF06D6A0);
   static const Color gradient1 = Color.fromRGBO(187, 63, 221, 1);
