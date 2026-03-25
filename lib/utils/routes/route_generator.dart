@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/feature/RecipeDetailPage/presentation/pages/recipe_detail_page.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/pages/addRecipe.dart';
 import 'package:recepieapp/feature/Home/presentation/pages/home_page.dart';
 import 'package:recepieapp/login_page.dart';
@@ -18,6 +19,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const HomePage());
       case Routes.addRecipe:
         return MaterialPageRoute(builder: (_) => const AddRecipePage());
+      case Routes.recipeDetails:
+        return MaterialPageRoute(builder: (_) => const RecipeDetailPage());
       // case Routes.signup:
       //   return MaterialPageRoute(builder: (_) => const SignUp());
       case Routes.bottomNav:
