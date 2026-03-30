@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class AppTypography {
   static TextTheme textTheme = const TextTheme(
-    // 🔥 Display (Big Titles / Hero Text)
+    
+    // Display (Big Titles / Hero Text)
     displayLarge: TextStyle(
       fontFamily: 'Ephesis',
       fontSize: 40,
@@ -15,7 +16,7 @@ class AppTypography {
       fontWeight: FontWeight.w400,
     ),
 
-    // 🧾 Headlines (Recipe Titles)
+    // Headlines (Recipe Titles)
     headlineLarge: TextStyle(
       fontFamily: 'Epilogue',
       fontSize: 28,
@@ -28,7 +29,7 @@ class AppTypography {
       fontWeight: FontWeight.w600,
     ),
 
-    // 📌 Titles (Section headings)
+    // Titles (Section headings)
     titleLarge: TextStyle(
       fontFamily: 'Epilogue',
       fontSize: 20,
@@ -41,7 +42,7 @@ class AppTypography {
       fontWeight: FontWeight.w500,
     ),
 
-    // 📖 Body (Main readable text)
+    // Body (Main readable text)
     bodyLarge: TextStyle(
       fontFamily: 'PlusJakartaSans',
       fontSize: 16,
@@ -60,7 +61,7 @@ class AppTypography {
       fontWeight: FontWeight.w400,
     ),
 
-    // 🔘 Buttons
+    // Buttons
     labelLarge: TextStyle(
       fontFamily: 'Epilogue',
       fontSize: 16,

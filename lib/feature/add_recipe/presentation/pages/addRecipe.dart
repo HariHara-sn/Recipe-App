@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:recepieapp/Theme/app_colors.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/user_avatar.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -505,12 +506,22 @@ class _ImagePicker extends StatelessWidget {
                 Image.file(image!, fit: BoxFit.cover)
               else
                 Container(
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFEEEDFA),
+                    color: AppColors.blueShade4,
                     borderRadius: BorderRadius.circular(16),
                   ),
+                  // DottedBorder(
+                  //   options: RoundedRectDottedBorderOptions(
+                  //     padding: const EdgeInsets.only(left: 80),
+                  //     color: const Color(0xFF3D3A8C).withOpacity(0.3),
+                  //     strokeWidth: 2,
+                  //     dashPattern: const [8, 6],
+                  //     radius: const Radius.circular(16),
+                  //   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
                         width: 52,
@@ -535,7 +546,7 @@ class _ImagePicker extends StatelessWidget {
                       Text(
                         'Add a Photo',
                         style: tt.labelLarge?.copyWith(
-                          color: const Color(0xFF3D3A8C),
+                          color: AppColors.blueShadeText,
                           fontSize: 14,
                         ),
                       ),
@@ -543,7 +554,7 @@ class _ImagePicker extends StatelessWidget {
                       Text(
                         'Capture the final dish',
                         style: tt.bodySmall?.copyWith(
-                          color: const Color(0xFF9090AA),
+                          color: AppColors.blueShade3,
                         ),
                       ),
                     ],
@@ -736,7 +747,7 @@ class _ServingsDropdown extends StatelessWidget {
           style: tt.bodyMedium?.copyWith(color: const Color(0xFF1A1A2E)),
           icon: const Icon(
             Icons.expand_more_rounded,
-            color: Color(0xFF3D3A8C),
+            color: AppColors.blueShadeText,
             size: 20,
           ),
           items: List.generate(
@@ -904,7 +915,11 @@ class _StyledTextField extends StatelessWidget {
         style: tt.bodyMedium?.copyWith(color: const Color(0xFF1A1A2E)),
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: tt.bodyMedium?.copyWith(color: const Color(0xFFBBBBCC)),
+          hintStyle: tt.bodyMedium?.copyWith(
+            color: AppColors.hintTextColor,
+            fontWeight: FontWeight.bold,
+          ),
+
           prefixIcon: prefixIcon != null
               ? Icon(prefixIcon, color: const Color(0xFF9090AA), size: 18)
               : null,

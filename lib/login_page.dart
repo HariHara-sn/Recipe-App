@@ -50,7 +50,7 @@ class SignIn extends StatelessWidget {
                   "Step into the warmth of the kitchen. A digital heirloom for your family's secret ingredients.",
                   textAlign: TextAlign.center,
                   style: tt.bodyLarge?.copyWith(
-                    color: AppColors.blackText,
+                    color: AppColors.blackShadeText,
                     height: 1.6,
                   ),
                 ),
