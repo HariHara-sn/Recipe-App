@@ -2,7 +2,9 @@ class AppImages {
   static const String splashImage = 'assets/Images/splash_screen.png';
   static const String loginCard = 'assets/Images/login_page.png';
   static const String applogo = 'assets/applogo.png';
-  
+  static const String upLoadImageBackground =
+      'assets/Images/upload_image_background.png';
+
   static const String food_1 = 'assets/Images/food_1.png';
   static const String food_2 = 'assets/Images/food_2.png';
   static const String food_3 = 'assets/Images/food_3.png';
