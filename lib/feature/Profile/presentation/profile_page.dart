@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recepieapp/Theme/app_colors.dart';
 import 'package:recepieapp/utils/routes/routes.dart';
 
-import '../../auth/provider/userprovider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

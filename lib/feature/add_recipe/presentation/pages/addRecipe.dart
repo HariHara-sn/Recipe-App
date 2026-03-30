@@ -15,6 +15,8 @@ import 'package:recepieapp/feature/add_recipe/presentation/widgets/serving_dropd
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/styled_text_field.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/submit_button.dart';
 
+
+
 class AddRecipePage extends StatefulWidget {
   const AddRecipePage({super.key});
 
@@ -97,7 +99,6 @@ class _AddRecipePageState extends State<AddRecipePage> {
                 ),
               ),
 
-              // ── White card ────────────────────────────────────────────────
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -222,7 +223,6 @@ class _AddRecipePageState extends State<AddRecipePage> {
 
                           const SizedBox(height: 24),
 
-                          // ── 4. Source link ────────────────────────────────
                           fieldLabel('SOURCE LINK', tt),
                           const SizedBox(height: 8),
                           StyledTextField(
@@ -234,7 +234,6 @@ class _AddRecipePageState extends State<AddRecipePage> {
 
                           const SizedBox(height: 24),
 
-                          //5. Servings
                           fieldLabel('SERVINGS', tt),
                           const SizedBox(height: 8),
                           ServingsDropdown(
@@ -245,7 +244,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
 
                           const SizedBox(height: 24),
 
-                          // ── 6. Cooking steps ──────────────────────────────
+                          // Cooking steps 
                           fieldLabel('THE METHOD', tt),
                           const SizedBox(height: 12),
 
@@ -305,7 +304,6 @@ class _AddRecipePageState extends State<AddRecipePage> {
                 ),
               ),
 
-              // Patti's tip
               const PattisTip(),
 
               const SliverToBoxAdapter(child: SizedBox(height: 120)),

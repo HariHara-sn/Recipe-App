@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recepieapp/Theme/app_images.dart';
 import 'package:recepieapp/feature/Home/presentation/widgets/helper_widget.dart';
-import 'package:recepieapp/main.dart';
 import 'package:recepieapp/utils/routes/routes.dart';
 
 class HeroRecipeCard extends StatelessWidget {
