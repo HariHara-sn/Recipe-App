@@ -1,15 +1,12 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:recepieapp/Theme/app_colors.dart';
+import 'package:recepieapp/feature/add_recipe/presentation/widgets/ingredients_title.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/user_avatar.dart';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ADD RECIPE PAGE
-// ─────────────────────────────────────────────────────────────────────────────
 class AddRecipePage extends StatefulWidget {
   const AddRecipePage({super.key});
 
@@ -63,7 +60,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
     final tt = Theme.of(context).textTheme;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F3FB),
+      backgroundColor: AppColors.blueShade5,
       extendBody: true,
       body: Stack(
         children: [
@@ -82,14 +79,14 @@ class _AddRecipePageState extends State<AddRecipePage> {
                           children: [
                             const Icon(
                               Icons.menu_book_rounded,
-                              color: Color(0xFF3D3A8C),
+                              color: AppColors.blueShadeText,
                               size: 20,
                             ),
                             const SizedBox(width: 6),
                             Text(
                               "Amma's Notebook",
                               style: tt.titleMedium?.copyWith(
-                                color: const Color(0xFF3D3A8C),
+                                color: AppColors.blueShadeText,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -109,7 +106,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
                   child: Text(
                     'New Family Secret',
                     style: tt.headlineLarge?.copyWith(
-                      color: const Color(0xFF1A1A2E),
+                      color: AppColors.blackShadeText,
                     ),
                   ),
                 ),
@@ -119,9 +116,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
                   child: Text(
                     'Preserve a new memory for the heirloom collection.',
-                    style: tt.bodyMedium?.copyWith(
-                      color: const Color(0xFF6B6B8A),
-                    ),
+                    style: tt.bodyMedium?.copyWith(color: AppColors.blueShade3),
                   ),
                 ),
               ),
@@ -136,7 +131,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
                       borderRadius: BorderRadius.circular(24),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF3D3A8C).withOpacity(0.06),
+                          color: AppColors.blueShadeText.withOpacity(0.06),
                           blurRadius: 20,
                           offset: const Offset(0, 6),
                         ),
@@ -175,7 +170,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
                               Container(
                                 padding: const EdgeInsets.all(6),
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF3D3A8C),
+                                  color: AppColors.blueShadeText,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: const Icon(
@@ -188,39 +183,24 @@ class _AddRecipePageState extends State<AddRecipePage> {
                           ),
                           const SizedBox(height: 10),
 
-                          // Header row
                           Row(
                             children: [
-                              Expanded(
-                                flex: 4,
-                                child: Text(
-                                  'Ingredient name',
-                                  style: tt.bodySmall?.copyWith(
-                                    color: const Color(0xFF9090AA),
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
+                              IngredientsTitle(
+                                tt: tt,
+                                title: 'Ingredient name',
+                                flexDigit: 4,
                               ),
-                              Expanded(
-                                flex: 2,
-                                child: Text(
-                                  'Qty',
-                                  style: tt.bodySmall?.copyWith(
-                                    color: const Color(0xFF9090AA),
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
+                              IngredientsTitle(
+                                tt: tt,
+                                title: 'Qty',
+                                flexDigit: 2,
                               ),
-                              Expanded(
-                                flex: 3,
-                                child: Text(
-                                  'Unit',
-                                  style: tt.bodySmall?.copyWith(
-                                    color: const Color(0xFF9090AA),
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
+                              IngredientsTitle(
+                                tt: tt,
+                                title: 'Unit',
+                                flexDigit: 3,
                               ),
+
                               const SizedBox(width: 28),
                             ],
                           ),
@@ -264,14 +244,14 @@ class _AddRecipePageState extends State<AddRecipePage> {
                                 children: [
                                   const Icon(
                                     Icons.add,
-                                    color: Color(0xFF3D3A8C),
+                                    color: AppColors.blueShadeText,
                                     size: 16,
                                   ),
                                   const SizedBox(width: 6),
                                   Text(
                                     'Add Ingredient',
                                     style: tt.labelLarge?.copyWith(
-                                      color: const Color(0xFF3D3A8C),
+                                      color: AppColors.blueShadeText,
                                       fontSize: 13,
                                     ),
                                   ),
@@ -338,14 +318,14 @@ class _AddRecipePageState extends State<AddRecipePage> {
                                 children: [
                                   const Icon(
                                     Icons.add_circle_outline,
-                                    color: Color(0xFF3D3A8C),
+                                    color: AppColors.blueShadeText,
                                     size: 16,
                                   ),
                                   const SizedBox(width: 6),
                                   Text(
                                     'Add Step',
                                     style: tt.labelLarge?.copyWith(
-                                      color: const Color(0xFF3D3A8C),
+                                      color: AppColors.blueShadeText,
                                       fontSize: 13,
                                     ),
                                   ),
@@ -363,7 +343,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
                             child: ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF3D3A8C),
+                                backgroundColor: AppColors.blueShadeText,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(28),
                                 ),
@@ -406,7 +386,10 @@ class _AddRecipePageState extends State<AddRecipePage> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(18),
                       border: const Border(
-                        left: BorderSide(color: Color(0xFF3D3A8C), width: 3.5),
+                        left: BorderSide(
+                          color: AppColors.blueShadeText,
+                          width: 3.5,
+                        ),
                       ),
                     ),
                     child: Column(
@@ -416,7 +399,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
                           children: [
                             const Icon(
                               Icons.lightbulb_outline_rounded,
-                              color: Color(0xFF3D3A8C),
+                              color: AppColors.blueShadeText,
                               size: 16,
                             ),
                             const SizedBox(width: 6),
@@ -424,7 +407,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
                               "Patti's Note",
                               style: Theme.of(context).textTheme.labelLarge
                                   ?.copyWith(
-                                    color: const Color(0xFF3D3A8C),
+                                    color: AppColors.blueShadeText,
                                     fontSize: 13,
                                   ),
                             ),
@@ -447,14 +430,6 @@ class _AddRecipePageState extends State<AddRecipePage> {
 
               const SliverToBoxAdapter(child: SizedBox(height: 120)),
             ],
-          ),
-
-          // ── Floating blur bottom nav ──────────────────────────────────────
-          const Positioned(
-            left: 20,
-            right: 20,
-            bottom: 24,
-            child: _FloatingNavBar(selected: 2),
           ),
         ],
       ),
@@ -508,13 +483,13 @@ class _ImagePicker extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: AppColors.blueShade4,
+                    color: AppColors.blueShade5,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   // DottedBorder(
                   //   options: RoundedRectDottedBorderOptions(
                   //     padding: const EdgeInsets.only(left: 80),
-                  //     color: const Color(0xFF3D3A8C).withOpacity(0.3),
+                  //     color: AppColors.blueShadeText.withOpacity(0.3),
                   //     strokeWidth: 2,
                   //     dashPattern: const [8, 6],
                   //     radius: const Radius.circular(16),
@@ -531,14 +506,14 @@ class _ImagePicker extends StatelessWidget {
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFF3D3A8C).withOpacity(0.12),
+                              color: AppColors.blueShadeText.withOpacity(0.12),
                               blurRadius: 12,
                             ),
                           ],
                         ),
                         child: const Icon(
                           Icons.camera_alt_outlined,
-                          color: Color(0xFF3D3A8C),
+                          color: AppColors.blueShadeText,
                           size: 22,
                         ),
                       ),
@@ -634,20 +609,21 @@ class _IngredientFieldRowState extends State<_IngredientFieldRow> {
             height: 44,
             padding: const EdgeInsets.symmetric(horizontal: 8),
             decoration: BoxDecoration(
-              color: const Color(0xFFF4F3FB),
+              color: AppColors.blueShade5,
               borderRadius: BorderRadius.circular(10),
             ),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
+                dropdownColor: AppColors.white,
                 value: widget.row.unit,
                 isExpanded: true,
                 style: widget.tt.bodySmall?.copyWith(
-                  color: const Color(0xFF1A1A2E),
+                  color: AppColors.blackShadeText,
                 ),
                 icon: const Icon(
                   Icons.expand_more_rounded,
                   size: 16,
-                  color: Color(0xFF9090AA),
+                  color: AppColors.blueShade3,
                 ),
                 items: _units
                     .map(
@@ -692,7 +668,7 @@ class _IngredientFieldRowState extends State<_IngredientFieldRow> {
     return Container(
       height: 44,
       decoration: BoxDecoration(
-        color: const Color(0xFFF4F3FB),
+        color: AppColors.blueShade5,
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextField(
@@ -703,7 +679,7 @@ class _IngredientFieldRowState extends State<_IngredientFieldRow> {
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: widget.tt.bodySmall?.copyWith(
-            color: const Color(0xFFBBBBCC),
+            color: AppColors.hintTextColor,
           ),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(
@@ -736,12 +712,13 @@ class _ServingsDropdown extends StatelessWidget {
       height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF4F3FB),
+        color: AppColors.blueShade5,
+        border: Border.all(color: AppColors.blueShade4),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFFE0DEF7)),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<int>(
+          dropdownColor: AppColors.white,
           value: value,
           isExpanded: true,
           style: tt.bodyMedium?.copyWith(color: const Color(0xFF1A1A2E)),
@@ -756,7 +733,7 @@ class _ServingsDropdown extends StatelessWidget {
               value: i + 1,
               child: Text(
                 i + 1 == 1 ? '1 person' : '${i + 1} people',
-                style: tt.bodyMedium?.copyWith(color: const Color(0xFF1A1A2E)),
+                style: tt.bodyMedium?.copyWith(color: AppColors.blackShadeText),
               ),
             ),
           ),
@@ -794,7 +771,7 @@ class _CookingStepField extends StatelessWidget {
           height: 26,
           margin: const EdgeInsets.only(top: 12, right: 10),
           decoration: const BoxDecoration(
-            color: Color(0xFF3D3A8C),
+            color: AppColors.blueShadeText,
             shape: BoxShape.circle,
           ),
           child: Center(
@@ -814,19 +791,22 @@ class _CookingStepField extends StatelessWidget {
               // Heading
               Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF4F3FB),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: const Color(0xFFE0DEF7)),
+                  // color: const AppColors.blueShade5
+                  color: AppColors.blueShade5,
+                  border: Border.all(color: AppColors.blueShade4),
                 ),
                 child: TextField(
                   controller: row.headingCtrl,
-                  style: tt.bodyMedium?.copyWith(
-                    color: const Color(0xFF1A1A2E),
+                  style: tt.headlineSmall?.copyWith(
+                    color: AppColors.blackShadeText,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
                   ),
                   decoration: InputDecoration(
                     hintText: 'Heading: e.g., Prepare the Fish',
-                    hintStyle: tt.bodySmall?.copyWith(
-                      color: const Color(0xFFBBBBCC),
+                    hintStyle: tt.bodyMedium?.copyWith(
+                      color: AppColors.hintTextColor,
                     ),
                     border: InputBorder.none,
                     contentPadding: const EdgeInsets.symmetric(
@@ -840,20 +820,20 @@ class _CookingStepField extends StatelessWidget {
               // Description
               Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF4F3FB),
+                  color: AppColors.blueShade5,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: const Color(0xFFE0DEF7)),
+                  border: Border.all(color: AppColors.blueShade4),
                 ),
                 child: TextField(
                   controller: row.descCtrl,
                   maxLines: 3,
                   style: tt.bodyMedium?.copyWith(
-                    color: const Color(0xFF1A1A2E),
+                    color: AppColors.blackShadeText,
                   ),
                   decoration: InputDecoration(
                     hintText: 'Description: e.g., Clean the fish thoroughly...',
                     hintStyle: tt.bodySmall?.copyWith(
-                      color: const Color(0xFFBBBBCC),
+                      color: AppColors.hintTextColor,
                     ),
                     border: InputBorder.none,
                     contentPadding: const EdgeInsets.symmetric(
@@ -905,14 +885,18 @@ class _StyledTextField extends StatelessWidget {
     final tt = Theme.of(context).textTheme;
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFFF4F3FB),
+        color: AppColors.blueShade5,
+        border: Border.all(color: AppColors.blueShade4),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFFE0DEF7)),
       ),
       child: TextField(
         controller: controller,
         keyboardType: keyboardType,
-        style: tt.bodyMedium?.copyWith(color: const Color(0xFF1A1A2E)),
+        style: tt.headlineSmall?.copyWith(
+          color: AppColors.blackShadeText,
+          fontSize: 17,
+          fontWeight: FontWeight.bold,
+        ),
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: tt.bodyMedium?.copyWith(
@@ -946,90 +930,4 @@ Widget _fieldLabel(String text, TextTheme tt) {
       letterSpacing: 1.4,
     ),
   );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// FLOATING BLUR BOTTOM NAV (reused from HomePage)
-// ─────────────────────────────────────────────────────────────────────────────
-class _FloatingNavBar extends StatelessWidget {
-  final int selected;
-  const _FloatingNavBar({required this.selected});
-
-  static const _items = [
-    (icon: Icons.home_rounded, label: 'HOME'),
-    (icon: Icons.search_rounded, label: 'SEARCH'),
-    (icon: Icons.add_circle_outline_rounded, label: 'ADD'),
-    (icon: Icons.person_outline_rounded, label: 'PROFILE'),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    final tt = Theme.of(context).textTheme;
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(32),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
-        child: Container(
-          height: 68,
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.75),
-            borderRadius: BorderRadius.circular(32),
-            border: Border.all(color: Colors.white.withOpacity(0.6), width: 1),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xFF3D3A8C).withOpacity(0.12),
-                blurRadius: 24,
-                offset: const Offset(0, 8),
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: List.generate(_items.length, (i) {
-              final item = _items[i];
-              final isSelected = i == selected;
-              return GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () {},
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 14,
-                    vertical: 8,
-                  ),
-                  decoration: isSelected
-                      ? BoxDecoration(
-                          color: const Color(0xFF3D3A8C),
-                          borderRadius: BorderRadius.circular(20),
-                        )
-                      : null,
-                  child: isSelected
-                      ? Icon(item.icon, color: Colors.white, size: 24)
-                      : Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              item.icon,
-                              color: const Color(0xFF9090AA),
-                              size: 22,
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              item.label,
-                              style: tt.bodySmall?.copyWith(
-                                color: const Color(0xFF9090AA),
-                                fontSize: 9,
-                                letterSpacing: 0.8,
-                              ),
-                            ),
-                          ],
-                        ),
-                ),
-              );
-            }),
-          ),
-        ),
-      ),
-    );
-  }
 }

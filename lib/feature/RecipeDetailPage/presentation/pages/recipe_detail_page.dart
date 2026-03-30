@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:recepieapp/Theme/app_colors.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/user_avatar.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -97,7 +98,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.transparent,
       builder: (_) => _EditIngredientsSheet(
         ingredients: List.from(
           _ingredients.map(
@@ -1418,7 +1419,7 @@ Widget _sheetField(
       style: tt.bodyMedium?.copyWith(color: const Color(0xFF1A1A2E)),
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: tt.bodySmall?.copyWith(color: const Color(0xFFBBBBCC)),
+        hintStyle: tt.bodySmall?.copyWith(color: AppColors.hintTextColor),
         border: InputBorder.none,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 12,
