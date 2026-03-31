@@ -24,7 +24,7 @@ class _FloatingNavBarState extends State<FloatingNavBar> {
 
   final List<Widget> _pages = const [
     HomePage(),
-    SearchRecipePage(),
+    PantrySearchPage(),
     AddRecipePage(),
     ProfileScreen(),
   ];
