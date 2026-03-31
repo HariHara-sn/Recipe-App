@@ -6,6 +6,7 @@ import 'package:recepieapp/Theme/app_colors.dart';
 import 'package:recepieapp/feature/Home/presentation/widgets/app_bar.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/cooking_step_field.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/field_label.dart';
+import 'package:recepieapp/feature/add_recipe/presentation/widgets/full_with_icon_button.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/image_picker_widget.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/ingredient_field_row.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/ingredient_title_row.dart';
@@ -14,8 +15,6 @@ import 'package:recepieapp/feature/add_recipe/presentation/widgets/pattis_tip.da
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/serving_dropdown.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/styled_text_field.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/submit_button.dart';
-
-
 
 class AddRecipePage extends StatefulWidget {
   const AddRecipePage({super.key});
@@ -183,42 +182,18 @@ class _AddRecipePageState extends State<AddRecipePage> {
                           }),
 
                           // Add ingredient button
-                          GestureDetector(
-                            onTap: () => setState(
+                          FullWidthIconButton(
+                            onPressed: () => setState(
                               () => _ingredients.add(IngredientRow()),
                             ),
-                            child: Container(
-                              width: double.infinity,
-                              padding: const EdgeInsets.symmetric(vertical: 11),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: const Color(
-                                    0xFF3D3A8C,
-                                  ).withOpacity(0.3),
-                                  width: 1.5,
-                                  style: BorderStyle.solid,
-                                ),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(
-                                    Icons.add,
-                                    color: AppColors.blueShadeText,
-                                    size: 16,
-                                  ),
-                                  const SizedBox(width: 6),
-                                  Text(
-                                    'Add Ingredient',
-                                    style: tt.labelLarge?.copyWith(
-                                      color: AppColors.blueShadeText,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            icon: Icons.add,
+                            label: "Add Ingredient",
+                            textStyle: tt.labelLarge?.copyWith(
+                              color: AppColors.blueShadeText,
+                              fontSize: 13,
                             ),
+                            iconColor: AppColors.blueShadeText,
+                            borderColor: AppColors.blueShade3.withOpacity(0.5),
                           ),
 
                           const SizedBox(height: 24),
@@ -244,7 +219,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
 
                           const SizedBox(height: 24),
 
-                          // Cooking steps 
+                          // Cooking steps
                           fieldLabel('THE METHOD', tt),
                           const SizedBox(height: 12),
 
@@ -263,36 +238,18 @@ class _AddRecipePageState extends State<AddRecipePage> {
                           }),
 
                           // Add step button
-                          GestureDetector(
-                            onTap: () => setState(() => _steps.add(StepRow())),
-                            child: Container(
-                              width: double.infinity,
-                              padding: const EdgeInsets.symmetric(vertical: 11),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFEEEDFA),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(
-                                    Icons.add_circle_outline,
-                                    color: AppColors.blueShadeText,
-                                    size: 16,
-                                  ),
-                                  const SizedBox(width: 6),
-                                  Text(
-                                    'Add Step',
-                                    style: tt.labelLarge?.copyWith(
-                                      color: AppColors.blueShadeText,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                          FullWidthIconButton(
+                            onPressed: () =>
+                                setState(() => _steps.add(StepRow())),
+                            icon: Icons.add_circle_outline,
+                            label: "Add Step",
+                            textStyle: tt.labelLarge?.copyWith(
+                              color: AppColors.blueShadeText,
+                              fontSize: 13,
                             ),
+                            iconColor: AppColors.blueShadeText,
+                            backgroundColor: AppColors.blueShade4,
                           ),
-
                           const SizedBox(height: 24),
 
                           //Submit button
