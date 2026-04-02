@@ -1,25 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
+import 'package:flutter/services.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 import 'package:recepieapp/Theme/app_theme.dart';
 import 'package:recepieapp/utils/routes/route_generator.dart';
 import 'package:recepieapp/utils/routes/routes.dart';
 
-var logger = Logger();
+import 'core/services/bloc_observer.dart';
+import 'feature/auth/data/datasources/firebase_auth_datasource.dart';
+import 'feature/auth/data/repositories/auth_repository_impl.dart';
+import 'feature/auth/presentation/bloc/auth_bloc.dart';
+import 'feature/auth/presentation/bloc/auth_event.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  await Firebase.initializeApp();
+
+  await Hive.initFlutter();
+  await Hive.openBox('authBox');
+  await Hive.openBox('profileBox');
+
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  // BLoC observer — only active in debug builds
+  assert(() {
+    Bloc.observer = AppBlocObserver();
+    return true;
+  }());
+
+  final authDataSource = FirebaseAuthDataSource();
+  final authRepository = AuthRepositoryImpl(authDataSource);
+
+  runApp(
+    MyApp(
+      authRepository: authRepository,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final AuthRepositoryImpl authRepository;
+
+  const MyApp({
+    super.key,
+    required this.authRepository,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheme.lightTheme,
-      debugShowCheckedModeBanner: false,
-      initialRoute: Routes.login,
-      onGenerateRoute: RouteGenerator.generateRoute,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => AuthBloc(authRepository)..add(const AppStarted()),
+        ),
+      ],
+      child: MaterialApp(
+        theme: AppTheme.lightTheme,
+        debugShowCheckedModeBanner: false,
+        initialRoute: Routes.initial,
+        onGenerateRoute: RouteGenerator.generateRoute,
+      ),
     );
   }
 }

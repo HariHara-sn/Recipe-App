@@ -1,75 +1,32 @@
-// import '../../data/api.dart';
-// import '../../data/failure.dart';
-// import '../models/auth_model.dart';
+import '../models/user_model.dart';
 
-// class AuthRepository {
-//   final AuthApi _api;  //creating an obj for AuthApi class
+/// CONTRACT — what auth can do. No SDK imports, no implementation.
+///
+/// AuthBloc depends on THIS type, never on FirebaseAuthDataSource.
+/// This is the boundary that makes the whole architecture testable:
+///
+///   Production:  AuthRepositoryImpl(FirebaseAuthDataSource())
+///   Tests:       MockAuthRepository()   ← swap with zero code changes to BLoC
+abstract class AuthRepository {
+  /// Continuous stream of auth state from Firebase.
+  ///
+  /// Emits:
+  ///   • UserModel  — whenever a user is signed in (including token refresh)
+  ///   • null       — whenever the user is signed out
+  ///
+  /// AuthBloc subscribes to this once on AppStarted and stays subscribed
+  /// for the app's lifetime. Firebase handles token expiry automatically.
+  Stream<UserModel?> getAuthState();
 
-//   AuthRepository(this._api);
+  /// Triggers the Google OAuth popup, then signs into Firebase.
+  /// Throws [Exception] if the user cancels or Firebase rejects.
+  Future<UserModel> signInWithGoogle();
 
-//   Future<Either<Failure, LoginResponse>> login(String userId, String password) {
-//     return _api.login(userId, password);
-//   }
-//     Future<Either<Failure, String>> signups(String userId,String username, String password) {
-//     return _api.signup(userId, username,password);
-//   }
-// }
+  /// Signs out from Google + Firebase, clears local Hive cache.
+  Future<void> signOut();
 
-
-
-
-
-
-
-
-
-
-// // import 'package:learnpro/feature/auth/data/api.dart'; // Api data
-// // import 'package:learnpro/feature/auth/domain/models/auth_model.dart'; // Models
-
-// // class AuthRepository {
-// //   final AuthAPICalls _api = AuthAPICalls();
-
-// //   Future<GetOtpResponse> GetOTP(String email) async {
-// //     try {
-// //       final responseJson = await _api.GetOTP(email);
-
-// //       return GetOtpResponse.fromJson(responseJson); // Parse JSON to model
-// //     } catch (e) {
-// //       rethrow; // Re-throw the error to be handled by the controller
-// //     }
-// //   }
-
-// //   Future<OtpVerificationResponse> authenticateOTP(String email, int otp) async {
-// //     try {
-// //       final responseJson = await _api.authenticateOTP(email, otp);
-
-// //       return OtpVerificationResponse.fromJson(
-// //           responseJson); // Parse JSON to model
-// //     } catch (e) {
-// //       rethrow; // Re-throw the error to be handled by the controller
-// //     }
-// //   }
-
-// //   Future<GoogleOAuthVerificationResponse> GoogleSignIN(String idToken) async {
-// //     try {
-// //       final responseJson = await _api.GoogleSignIN(idToken);
-
-// //       return GoogleOAuthVerificationResponse.fromJson(
-// //           responseJson); // Parse JSON to model
-// //     } catch (e) {
-// //       rethrow; // Re-throw the error to be handled by the controller
-// //     }
-// //   }
-
-// //   Future<AppleOAuthVerificationResponse> AppleSignIN(String idToken) async {
-// //     try {
-// //       final responseJson = await _api.AppleSignIN(idToken);
-
-// //       return AppleOAuthVerificationResponse.fromJson(
-// //           responseJson); // Parse JSON to model
-// //     } catch (e) {
-// //       rethrow; // Re-throw the error to be handled by the controller
-// //     }
-// //   }
-// // }
+  /// Returns the user last persisted to Hive.
+  /// Used on cold start before the async [getAuthState] stream fires,
+  /// so the UI can show cached data instantly with no flicker.
+  UserModel? getCachedUser();
+}

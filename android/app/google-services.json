@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "1090732589984",
+    "project_id": "recipe-app-ce154",
+    "storage_bucket": "recipe-app-ce154.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090732589984:android:9c993b3370d1ae9b2c9ac5",
+        "android_client_info": {
+          "package_name": "com.example.learn_bloc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090732589984-3funribs4d88cqb7hf8vfunldd01rvdj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.learn_bloc",
+            "certificate_hash": "b622c3249537bdfe4601bbc2af1e6d95918e5c16"
+          }
+        },
+        {
+          "client_id": "1090732589984-a9eph7iopkd848qbbnl5pqdgmtqsf29v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKdjw5ZKt51v8FyscWR5ZQiNYs3Puol08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090732589984-a9eph7iopkd848qbbnl5pqdgmtqsf29v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1090732589984-k1qf0e228elksm6ea3focok1dk4t8056.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.learnBloc"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090732589984:android:8fdcd13ca81d8d972c9ac5",
+        "android_client_info": {
+          "package_name": "com.example.recepieapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090732589984-a9eph7iopkd848qbbnl5pqdgmtqsf29v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKdjw5ZKt51v8FyscWR5ZQiNYs3Puol08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090732589984-a9eph7iopkd848qbbnl5pqdgmtqsf29v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1090732589984-k1qf0e228elksm6ea3focok1dk4t8056.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.learnBloc"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

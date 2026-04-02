@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:recepieapp/Theme/app_colors.dart';
 import 'package:recepieapp/utils/routes/routes.dart';
 
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
