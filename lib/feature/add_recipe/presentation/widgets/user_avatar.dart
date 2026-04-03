@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/app_images.dart';
+import 'package:recepieapp/utils/constants/Theme/app_images.dart';
 
 class UserAvatar extends StatelessWidget {
   const UserAvatar({super.key});

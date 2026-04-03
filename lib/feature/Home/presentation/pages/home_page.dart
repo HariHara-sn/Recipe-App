@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/app_colors.dart';
-import 'package:recepieapp/utils/constants/app_images.dart';
-import 'package:recepieapp/feature/Home/domain/model/recipe_model.dart';
-import 'package:recepieapp/feature/Home/presentation/widgets/amma_tip.dart';
-import 'package:recepieapp/feature/Home/presentation/widgets/app_bar.dart';
-import 'package:recepieapp/feature/Home/presentation/widgets/app_header.dart';
-import 'package:recepieapp/feature/Home/presentation/widgets/hero_recipe_card.dart';
-import 'package:recepieapp/feature/Home/presentation/widgets/recent_addition_card.dart';
-import 'package:recepieapp/feature/Home/presentation/widgets/recent_addition_title.dart';
-import 'package:recepieapp/feature/Home/presentation/widgets/recipes_list.dart';
-import 'package:recepieapp/feature/Home/presentation/widgets/search_bar.dart';
-import 'package:recepieapp/feature/Home/presentation/widgets/suggestion_header.dart';
+import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
+import 'package:recepieapp/utils/constants/Theme/app_images.dart';
+import 'package:recepieapp/feature/home/domain/model/recipe_model.dart';
+import 'package:recepieapp/feature/home/presentation/widgets/amma_tip.dart';
+import 'package:recepieapp/feature/home/presentation/widgets/app_bar.dart';
+import 'package:recepieapp/feature/home/presentation/widgets/app_header.dart';
+import 'package:recepieapp/feature/home/presentation/widgets/hero_recipe_card.dart';
+import 'package:recepieapp/feature/home/presentation/widgets/recent_addition_card.dart';
+import 'package:recepieapp/feature/home/presentation/widgets/recent_addition_title.dart';
+import 'package:recepieapp/feature/home/presentation/widgets/recipes_list.dart';
+import 'package:recepieapp/feature/home/presentation/widgets/search_bar.dart';
+import 'package:recepieapp/feature/home/presentation/widgets/suggestion_header.dart';
 
 const List<Recipe> recentRecipes = [
   Recipe(

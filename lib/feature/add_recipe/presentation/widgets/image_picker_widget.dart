@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/app_colors.dart';
-import 'package:recepieapp/utils/constants/app_images.dart';
+import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
+import 'package:recepieapp/utils/constants/Theme/app_images.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/dashed_border_painter.dart';
 
 class ImagePickerWidget extends StatelessWidget {

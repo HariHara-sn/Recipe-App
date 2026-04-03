@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/app_colors.dart';
+import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
 
 class SubmitButton extends StatelessWidget {
   final TextTheme tt;

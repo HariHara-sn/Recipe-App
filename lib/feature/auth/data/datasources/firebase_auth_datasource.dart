@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive/hive.dart';
 
+import '../../../../utils/constants/constants.dart';
 import '../../domain/models/user_model.dart';
 
 /// ONLY file in the project that imports firebase_auth or google_sign_in.
@@ -28,7 +29,7 @@ class FirebaseAuthDataSource {
     Box? authBox,
   })  : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
         _googleSignIn = googleSignIn ?? GoogleSignIn(),
-        _authBox = authBox ?? Hive.box('authBox');
+        _authBox = authBox ?? Hive.box(HiveBoxes.auth);
   // Injectable constructor allows unit-testing with mocks ^
 
   // ── Streams ────────────────────────────────────────────────────

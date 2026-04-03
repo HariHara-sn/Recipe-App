@@ -4,7 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import 'package:recepieapp/utils/constants/app_theme.dart';
+import 'package:recepieapp/core/theme/app_theme.dart';
+import 'package:recepieapp/utils/constants/constants.dart';
 
 import 'core/router/app_router.dart';
 import 'core/services/bloc_observer.dart';
@@ -19,8 +20,8 @@ void main() async {
   await Firebase.initializeApp();
 
   await Hive.initFlutter();
-  await Hive.openBox('authBox');
-  await Hive.openBox('profileBox');
+  await Hive.openBox(HiveBoxes.auth);
+  await Hive.openBox(HiveBoxes.profile);
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

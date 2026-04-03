@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recepieapp/utils/constants/app_images.dart';
-import 'package:recepieapp/feature/Home/presentation/widgets/helper_widget.dart';
+import 'package:recepieapp/utils/constants/Theme/app_images.dart';
+import 'package:recepieapp/feature/home/presentation/widgets/helper_widget.dart';
 
 import '../../../../core/router/app_routes.dart';
 

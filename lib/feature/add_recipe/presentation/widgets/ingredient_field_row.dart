@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:recepieapp/utils/constants/app_colors.dart';
+import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
 
 class IngredientRow {
   final TextEditingController nameCtrl = TextEditingController();
