@@ -1,3 +1,4 @@
+DataBase Structure Schema for Add Recipe Feature:
 1. Dish Image (hosted url - string)
 2. Name of the dish (recipe title) (string)
 3. Ingredients
