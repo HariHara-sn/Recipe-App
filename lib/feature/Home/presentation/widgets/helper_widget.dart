@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
+
+import '../../../../core/theme/app_colors.dart';
+
 // Helper widget
 Widget shimmerBox(double width, double height) {
-  return Container(
-    width: width,
-    height: height,
-    color: AppColors.white,
-  );
+  return Container(width: width, height: height, color: AppColors.white);
 }

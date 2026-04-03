@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/Theme/app_images.dart';
 import 'package:recepieapp/feature/home/presentation/widgets/helper_widget.dart';
 
+import '../../../../core/theme/app_images.dart';
+
 class RecentAdditionCard extends StatelessWidget {
-      final TextTheme tt;
+  final TextTheme tt;
 
   const RecentAdditionCard({super.key, required this.tt});
 
@@ -38,7 +39,6 @@ class RecentAdditionCard extends StatelessWidget {
   }
 }
 
-
 class _RecentCard extends StatelessWidget {
   final String tag, title, imageUrl;
   final TextTheme tt;
@@ -66,7 +66,12 @@ class _RecentCard extends StatelessWidget {
                 imageUrl,
                 fit: BoxFit.cover,
 
-                loadingBuilder:(_, child, progress) => // Hari remove this when you add the local image. bcoze local image dont need the progress [ :) Update: but we gona save the image in firebase]
+                loadingBuilder:
+                    (
+                      _,
+                      child,
+                      progress,
+                    ) => // Hari remove this when you add the local image. bcoze local image dont need the progress [ :) Update: but we gona save the image in firebase]
                     progress == null
                     ? child
                     : shimmerBox(double.infinity, 150),
@@ -97,5 +102,3 @@ class _RecentCard extends StatelessWidget {
     );
   }
 }
-
-

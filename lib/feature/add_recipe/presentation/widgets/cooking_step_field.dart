@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
+
+import '../../../../core/theme/app_colors.dart';
 
 /// Model (move later to models/ if needed)
 class StepRow {

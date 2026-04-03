@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
+
+import '../../../../core/theme/app_colors.dart';
 
 class StyledTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -7,7 +8,8 @@ class StyledTextField extends StatelessWidget {
   final IconData? prefixIcon;
   final TextInputType keyboardType;
 
-  const StyledTextField({super.key, 
+  const StyledTextField({
+    super.key,
     required this.controller,
     required this.hint,
     this.prefixIcon,
@@ -51,4 +53,3 @@ class StyledTextField extends StatelessWidget {
     );
   }
 }
-

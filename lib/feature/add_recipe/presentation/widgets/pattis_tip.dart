@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
+import '../../../../core/theme/app_colors.dart';
 
 class PattisTip extends StatelessWidget {
   const PattisTip({super.key});

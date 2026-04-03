@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/Theme/app_images.dart';
+
+import '../../../../core/theme/app_images.dart';
 
 class HeroCard extends StatelessWidget {
   const HeroCard({super.key});
@@ -130,14 +131,13 @@ class HeroCard extends StatelessWidget {
   }
 }
 
-
 Widget _shimmerLine(double width) {
-    return Container(
-      height: 10,
-      width: width,
-      decoration: BoxDecoration(
-        color: const Color(0xFFE0DEF7),
-        borderRadius: BorderRadius.circular(8),
-      ),
-    );
-  }
+  return Container(
+    height: 10,
+    width: width,
+    decoration: BoxDecoration(
+      color: const Color(0xFFE0DEF7),
+      borderRadius: BorderRadius.circular(8),
+    ),
+  );
+}

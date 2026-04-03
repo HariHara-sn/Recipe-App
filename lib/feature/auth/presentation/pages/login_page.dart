@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
+
 import '../../../../core/router/app_routes.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../widgets/guest_button.dart';
 import '../../widgets/hero_card.dart';
 import '../../widgets/login_button.dart';
@@ -19,13 +20,12 @@ class SignIn extends StatelessWidget {
     final tt = Theme.of(context).textTheme;
 
     return Scaffold(
-      backgroundColor:AppColors.softlavenderWhiteBackground, 
+      backgroundColor: AppColors.softlavenderWhiteBackground,
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthAuthenticated) {
             // Navigator.pushReplacementNamed(context, Routes.bottomNav);
             context.go(AppRoutes.bottomNav);
-
           }
 
           if (state is AuthError) {

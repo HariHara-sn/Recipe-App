@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
-import 'package:recepieapp/utils/constants/Theme/app_images.dart';
 import 'package:recepieapp/feature/home/domain/model/recipe_model.dart';
 import 'package:recepieapp/feature/home/presentation/widgets/amma_tip.dart';
 import 'package:recepieapp/feature/home/presentation/widgets/app_bar.dart';
@@ -11,6 +9,9 @@ import 'package:recepieapp/feature/home/presentation/widgets/recent_addition_tit
 import 'package:recepieapp/feature/home/presentation/widgets/recipes_list.dart';
 import 'package:recepieapp/feature/home/presentation/widgets/search_bar.dart';
 import 'package:recepieapp/feature/home/presentation/widgets/suggestion_header.dart';
+
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_images.dart';
 
 const List<Recipe> recentRecipes = [
   Recipe(
@@ -120,12 +121,12 @@ class _HomePageState extends State<HomePage> {
               // Amma's Tip
               AmmaTip(tt: tt),
 
-              // Title: Recent Additions 
-              RecentAdditionCardTitle(tt:tt),
+              // Title: Recent Additions
+              RecentAdditionCardTitle(tt: tt),
 
               // Recent Addition Cards
               RecentAdditionCard(tt: tt),
-              
+
               // Bottom padding so content isn't behind nav bar
               const SliverToBoxAdapter(child: SizedBox(height: 120)),
             ],

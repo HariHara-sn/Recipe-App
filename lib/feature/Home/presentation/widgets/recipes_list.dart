@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/Theme/app_images.dart';
 import 'package:recepieapp/feature/home/presentation/widgets/helper_widget.dart';
+
+import '../../../../core/theme/app_images.dart';
 
 class RecipesList extends StatelessWidget {
   final TextTheme tt;

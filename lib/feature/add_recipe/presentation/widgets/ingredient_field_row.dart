@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
+
+import '../../../../core/theme/app_colors.dart';
 
 class IngredientRow {
   final TextEditingController nameCtrl = TextEditingController();
@@ -121,9 +122,7 @@ class _IngredientFieldRowState extends State<IngredientFieldRow> {
         controller: ctrl,
         keyboardType: keyboardType,
         inputFormatters: inputFormatters,
-        style: widget.tt.bodySmall?.copyWith(
-          color: const Color(0xFF1A1A2E),
-        ),
+        style: widget.tt.bodySmall?.copyWith(color: const Color(0xFF1A1A2E)),
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: widget.tt.bodySmall?.copyWith(

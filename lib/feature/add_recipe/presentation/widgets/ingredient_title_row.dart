@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/field_label.dart';
+import '../../../../core/theme/app_colors.dart';
 
 class IngredientTitleRow extends StatelessWidget {
   final TextTheme tt;

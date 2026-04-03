@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/utils/constants/Theme/app_colors.dart';
+
+import '../../../../core/theme/app_colors.dart';
 
 class ServingsDropdown extends StatelessWidget {
   final int value;
   final TextTheme tt;
   final ValueChanged<int?> onChanged;
 
-  const ServingsDropdown({super.key, 
+  const ServingsDropdown({
+    super.key,
     required this.value,
     required this.tt,
     required this.onChanged,
