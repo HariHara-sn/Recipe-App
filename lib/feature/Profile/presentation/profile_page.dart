@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/Theme/app_colors.dart';
-import 'package:recepieapp/utils/routes/routes.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recepieapp/utils/constants/app_colors.dart';
+
+import '../../../core/router/app_routes.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -148,7 +150,8 @@ void handle_signout(context) {
           ),
           TextButton(
             onPressed: () async {
-              Navigator.pushReplacementNamed(context, Routes.login);
+              context.go(AppRoutes.login);
+
               // When logging out
 
               // await context.read<AuthService>().clearToken();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/Theme/app_images.dart';
+import 'package:recepieapp/utils/constants/app_images.dart';
 import 'package:recepieapp/feature/Home/presentation/widgets/helper_widget.dart';
 
 class RecipesList extends StatelessWidget {

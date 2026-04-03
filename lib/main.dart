@@ -4,10 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import 'package:recepieapp/Theme/app_theme.dart';
-import 'package:recepieapp/utils/routes/route_generator.dart';
-import 'package:recepieapp/utils/routes/routes.dart';
+import 'package:recepieapp/utils/constants/app_theme.dart';
 
+import 'core/router/app_router.dart';
 import 'core/services/bloc_observer.dart';
 import 'feature/auth/data/datasources/firebase_auth_datasource.dart';
 import 'feature/auth/data/repositories/auth_repository_impl.dart';
@@ -60,11 +59,11 @@ class MyApp extends StatelessWidget {
           create: (_) => AuthBloc(authRepository)..add(const AppStarted()),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        title: 'Recipe App',
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.initial,
-        onGenerateRoute: RouteGenerator.generateRoute,
+        routerConfig: AppRouter.router,
       ),
     );
   }

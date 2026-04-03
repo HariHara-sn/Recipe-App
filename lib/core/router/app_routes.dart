@@ -1,11 +1,8 @@
-class Routes {
-  static const initial = '/';
-  static const String splash = '/splash';
+ class AppRoutes {
+  static const String initial = '/splash';
   static const String login = '/login';
-  static const String signup = '/signup';
   static const String home = '/home';
   static const String addRecipe = '/addRecipe';
   static const String recipeDetails = '/recipeDetails';
   static const String bottomNav = '/bottomNav';
-  
 }

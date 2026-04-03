@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/Theme/app_colors.dart';
+import 'package:recepieapp/utils/constants/app_colors.dart';
 import 'package:recepieapp/feature/RecipeDetailPage/domain/model/cooking_steps_model.dart';
 import 'package:recepieapp/feature/RecipeDetailPage/domain/model/ingredient_model.dart';
 import 'package:recepieapp/feature/RecipeDetailPage/presentation/widgets/cooking_steps_list.dart';

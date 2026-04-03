@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../utils/routes/routes.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../../../core/router/app_routes.dart';
 import '../../bloc/auth_state.dart';
 
 class SplashNavigator {
@@ -14,20 +16,20 @@ class SplashNavigator {
 
       switch (state) {
         case AuthAuthenticated _:
-          Navigator.pushReplacementNamed(context, Routes.home);
+          context.go(AppRoutes.bottomNav);
           break;
 
         case AuthUnauthenticated _:
-          Navigator.pushReplacementNamed(context, Routes.login);
+          context.go(AppRoutes.login);
           break;
 
         case AuthError _:
-          Navigator.pushReplacementNamed(context, Routes.login);
+          context.go(AppRoutes.login);
           break;
 
         default:
-        // Even on error, redirect to login so user can retry
-          Navigator.pushReplacementNamed(context, Routes.login);
+          // Even on error, redirect to login so user can retry
+          context.go(AppRoutes.login);
       }
     });
   }

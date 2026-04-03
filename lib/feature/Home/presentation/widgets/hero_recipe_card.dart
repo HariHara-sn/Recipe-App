@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/Theme/app_images.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recepieapp/utils/constants/app_images.dart';
 import 'package:recepieapp/feature/Home/presentation/widgets/helper_widget.dart';
-import 'package:recepieapp/utils/routes/routes.dart';
+
+import '../../../../core/router/app_routes.dart';
 
 class HeroRecipeCard extends StatelessWidget {
   final TextTheme tt;
@@ -11,7 +13,7 @@ class HeroRecipeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.recipeDetails);
+        context.go(AppRoutes.recipeDetails);
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(24),

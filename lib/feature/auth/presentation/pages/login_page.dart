@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recepieapp/Theme/app_colors.dart';
-import 'package:recepieapp/utils/routes/routes.dart';
-
+import 'package:go_router/go_router.dart';
+import 'package:recepieapp/utils/constants/app_colors.dart';
+import '../../../../core/router/app_routes.dart';
 import '../../widgets/guest_button.dart';
 import '../../widgets/hero_card.dart';
 import '../../widgets/login_button.dart';
@@ -23,7 +23,9 @@ class SignIn extends StatelessWidget {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthAuthenticated) {
-            Navigator.pushReplacementNamed(context, Routes.bottomNav);
+            // Navigator.pushReplacementNamed(context, Routes.bottomNav);
+            context.go(AppRoutes.bottomNav);
+
           }
 
           if (state is AuthError) {

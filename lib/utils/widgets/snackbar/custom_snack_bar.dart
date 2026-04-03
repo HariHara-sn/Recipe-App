@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../Theme/app_colors.dart';
+import '../../constants/app_colors.dart';
 
 enum SnackBarType { success, failure }
 

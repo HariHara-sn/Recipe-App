@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/Theme/app_colors.dart';
+import 'package:recepieapp/utils/constants/app_colors.dart';
 
 class ServingsDropdown extends StatelessWidget {
   final int value;
