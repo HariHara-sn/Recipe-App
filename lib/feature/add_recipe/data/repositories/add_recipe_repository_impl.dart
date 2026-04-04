@@ -6,8 +6,7 @@ import '../failure.dart';
 class AddRecipeRepositoryImpl implements AddRecipeRepository {
   final AddRecipeFirebaseDatasource _datasource;
 
-  AddRecipeRepositoryImpl({required AddRecipeFirebaseDatasource datasource})
-      : _datasource = datasource;
+  AddRecipeRepositoryImpl({required AddRecipeFirebaseDatasource datasource}) : _datasource = datasource;
 
   @override
   Future<String> uploadImage(String localImagePath) async {
