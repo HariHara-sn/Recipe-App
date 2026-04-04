@@ -1,50 +1,5 @@
-class IngredientModel {
-  final String name;
-  final double quantity;
-  final String unit;
-
-  const IngredientModel({
-    required this.name,
-    required this.quantity,
-    required this.unit,
-  });
-
-  Map<String, dynamic> toMap() => {
-        'name': name,
-        'quantity': quantity,
-        'unit': unit,
-      };
-
-  factory IngredientModel.fromMap(Map<String, dynamic> map) => IngredientModel(
-        name: map['name'] as String,
-        quantity: (map['quantity'] as num).toDouble(),
-        unit: map['unit'] as String,
-      );
-}
-
-class StepModel {
-  final int stepNumber;
-  final String heading;
-  final String description;
-
-  const StepModel({
-    required this.stepNumber,
-    required this.heading,
-    required this.description,
-  });
-
-  Map<String, dynamic> toMap() => {
-        'stepNumber': stepNumber,
-        'heading': heading,
-        'description': description,
-      };
-
-  factory StepModel.fromMap(Map<String, dynamic> map) => StepModel(
-        stepNumber: map['stepNumber'] as int,
-        heading: map['heading'] as String,
-        description: map['description'] as String,
-      );
-}
+import 'ingredient_model.dart';
+import 'step_model.dart';
 
 class RecipeModel {
   final String? id;
@@ -70,17 +25,19 @@ class RecipeModel {
   });
 
   Map<String, dynamic> toMap() => {
-        'userId': userId,
-        'imageUrl': imageUrl,
-        'title': title,
-        'ingredients': ingredients.map((e) => e.toMap()).toList(),
-        'sourceLink': sourceLink,
-        'servings': servings,
-        'steps': steps.map((e) => e.toMap()).toList(),
-        'createdAt': createdAt?.toIso8601String() ?? DateTime.now().toIso8601String(),
-      };
+    'userId': userId,
+    'imageUrl': imageUrl,
+    'title': title,
+    'ingredients': ingredients.map((e) => e.toMap()).toList(),
+    'sourceLink': sourceLink,
+    'servings': servings,
+    'steps': steps.map((e) => e.toMap()).toList(),
+    'createdAt':
+        createdAt?.toIso8601String() ?? DateTime.now().toIso8601String(),
+  };
 
-  factory RecipeModel.fromMap(String id, Map<String, dynamic> map) => RecipeModel(
+  factory RecipeModel.fromMap(String id, Map<String, dynamic> map) =>
+      RecipeModel(
         id: id,
         userId: map['userId'] as String,
         imageUrl: map['imageUrl'] as String,

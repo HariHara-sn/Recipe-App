@@ -1,7 +1,8 @@
 import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../../../core/theme/app_images.dart';
 import '../../domain/models/recipe_model.dart';
@@ -16,9 +17,9 @@ class AddRecipeFirebaseDatasource {
     FirebaseFirestore? firestore,
     FirebaseStorage? storage,
     FirebaseAuth? auth,
-  })  : _firestore = firestore ?? FirebaseFirestore.instance,
-        _storage = storage ?? FirebaseStorage.instance,
-        _auth = auth ?? FirebaseAuth.instance;
+  }) : _firestore = firestore ?? FirebaseFirestore.instance,
+       _storage = storage ?? FirebaseStorage.instance,
+       _auth = auth ?? FirebaseAuth.instance;
 
   /// Uploads the image to Firebase Storage and returns the download URL.
   /// Images are stored at: users/{userId}/recipes/{timestamp}.jpg
@@ -49,10 +50,7 @@ class AddRecipeFirebaseDatasource {
     if (user == null) throw AddRecipeFailure.userNotAuthenticated();
 
     try {
-      final recipesRef = _firestore
-          .collection('users')
-          .doc(user.uid)
-          .collection('recipes');
+      final recipesRef = _firestore.collection('users').doc(user.uid).collection('recipes');
 
       await recipesRef.add(recipe.toMap());
     } catch (e) {

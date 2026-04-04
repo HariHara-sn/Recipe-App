@@ -1,7 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/failure.dart';
+import '../../domain/models/ingredient_model.dart';
 import '../../domain/models/recipe_model.dart';
+import '../../domain/models/step_model.dart';
 import '../../domain/repositories/add_recipe_repository.dart';
 
 part 'add_recipe_event.dart';
@@ -10,17 +12,13 @@ part 'add_recipe_state.dart';
 class AddRecipeBloc extends Bloc<AddRecipeEvent, AddRecipeState> {
   final AddRecipeRepository _repository;
 
-  AddRecipeBloc({required AddRecipeRepository repository})
-      : _repository = repository,
-        super(AddRecipeInitial()) {
+  AddRecipeBloc({required AddRecipeRepository repository}) : _repository = repository,
+  super(AddRecipeInitial()) {
     on<AddRecipeSubmitted>(_onSubmitted);
     on<AddRecipeReset>(_onReset);
   }
 
-  Future<void> _onSubmitted(
-    AddRecipeSubmitted event,
-    Emitter<AddRecipeState> emit,
-  ) async {
+  Future<void> _onSubmitted(AddRecipeSubmitted event, Emitter<AddRecipeState> emit) async {
     emit(AddRecipeLoading());
 
     try {

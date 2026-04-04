@@ -4,24 +4,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:recepieapp/feature/add_recipe/domain/models/recipe_model.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/bloc/add_recipe_bloc.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/widgets/cooking_step_field.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/widgets/field_label.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/widgets/full_with_icon_button.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/widgets/image_picker_widget.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/widgets/ingredient_field_row.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/widgets/ingredient_title_row.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/widgets/ingredients_title.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/widgets/pattis_tip.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/widgets/serving_dropdown.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/widgets/styled_text_field.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/widgets/submit_button.dart';
-import 'package:recepieapp/feature/home/presentation/widgets/app_bar.dart';
 
+import '../../../../feature/add_recipe/presentation/bloc/add_recipe_bloc.dart';
+import '../../../../feature/add_recipe/presentation/widgets/cooking_step_field.dart';
+import '../../../../feature/add_recipe/presentation/widgets/field_label.dart';
+import '../../../../feature/add_recipe/presentation/widgets/full_with_icon_button.dart';
+import '../../../../feature/add_recipe/presentation/widgets/image_picker_widget.dart';
+import '../../../../feature/add_recipe/presentation/widgets/ingredient_field_row.dart';
+import '../../../../feature/add_recipe/presentation/widgets/ingredient_title_row.dart';
+import '../../../../feature/add_recipe/presentation/widgets/ingredients_title.dart';
+import '../../../../feature/add_recipe/presentation/widgets/pattis_tip.dart';
+import '../../../../feature/add_recipe/presentation/widgets/serving_dropdown.dart';
+import '../../../../feature/add_recipe/presentation/widgets/styled_text_field.dart';
+import '../../../../feature/add_recipe/presentation/widgets/submit_button.dart';
+import '../../../../feature/home/presentation/widgets/app_bar.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../core/logging/logger.dart';
 import '../../../../utils/shared/custom_snack_bar.dart';
+import '../../domain/models/ingredient_model.dart';
+import '../../domain/models/step_model.dart';
 
 class AddRecipePage extends StatefulWidget {
   const AddRecipePage({super.key});
@@ -45,7 +46,6 @@ class _AddRecipePageState extends State<AddRecipePage> {
   }
 
   void _onSubmit() {
-    // Basic validation
     if (_dishImage == null) {
       _showSnackBar('Please pick a dish image.', isSuccess: false);
       return;
@@ -68,8 +68,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
       AddRecipeSubmitted(
         localImagePath: _dishImage!.path,
         title: _titleController.text.trim(),
-        ingredients: _ingredients
-            .where((e) => e.nameCtrl.text.trim().isNotEmpty)
+        ingredients: _ingredients.where((e) => e.nameCtrl.text.trim().isNotEmpty)
             .map(
               (e) => IngredientModel(
                 name: e.nameCtrl.text.trim(),
@@ -365,18 +364,18 @@ class _AddRecipePageState extends State<AddRecipePage> {
 
 // import 'package:flutter/material.dart';
 // import 'package:image_picker/image_picker.dart';
-// import 'package:recepieapp/feature/home/presentation/widgets/app_bar.dart';
-// import 'package:recepieapp/feature/add_recipe/presentation/widgets/cooking_step_field.dart';
-// import 'package:recepieapp/feature/add_recipe/presentation/widgets/field_label.dart';
-// import 'package:recepieapp/feature/add_recipe/presentation/widgets/full_with_icon_button.dart';
-// import 'package:recepieapp/feature/add_recipe/presentation/widgets/image_picker_widget.dart';
-// import 'package:recepieapp/feature/add_recipe/presentation/widgets/ingredient_field_row.dart';
-// import 'package:recepieapp/feature/add_recipe/presentation/widgets/ingredient_title_row.dart';
-// import 'package:recepieapp/feature/add_recipe/presentation/widgets/ingredients_title.dart';
-// import 'package:recepieapp/feature/add_recipe/presentation/widgets/pattis_tip.dart';
-// import 'package:recepieapp/feature/add_recipe/presentation/widgets/serving_dropdown.dart';
-// import 'package:recepieapp/feature/add_recipe/presentation/widgets/styled_text_field.dart';
-// import 'package:recepieapp/feature/add_recipe/presentation/widgets/submit_button.dart';
+// import '../../../../feature/home/presentation/widgets/app_bar.dart';
+// import '../../../../feature/add_recipe/presentation/widgets/cooking_step_field.dart';
+// import '../../../../feature/add_recipe/presentation/widgets/field_label.dart';
+// import '../../../../feature/add_recipe/presentation/widgets/full_with_icon_button.dart';
+// import '../../../../feature/add_recipe/presentation/widgets/image_picker_widget.dart';
+// import '../../../../feature/add_recipe/presentation/widgets/ingredient_field_row.dart';
+// import '../../../../feature/add_recipe/presentation/widgets/ingredient_title_row.dart';
+// import '../../../../feature/add_recipe/presentation/widgets/ingredients_title.dart';
+// import '../../../../feature/add_recipe/presentation/widgets/pattis_tip.dart';
+// import '../../../../feature/add_recipe/presentation/widgets/serving_dropdown.dart';
+// import '../../../../feature/add_recipe/presentation/widgets/styled_text_field.dart';
+// import '../../../../feature/add_recipe/presentation/widgets/submit_button.dart';
 
 // import '../../../../core/theme/app_colors.dart';
 
