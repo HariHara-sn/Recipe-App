@@ -4,7 +4,15 @@ import '../../../../core/theme/app_colors.dart';
 
 class SubmitButton extends StatelessWidget {
   final TextTheme tt;
-  const SubmitButton({super.key, required this.tt});
+  final bool isLoading;
+  final VoidCallback onPressed;
+
+  const SubmitButton({
+    super.key, 
+    required this.tt,
+    this.isLoading = false,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +20,7 @@ class SubmitButton extends StatelessWidget {
       width: double.infinity,
       height: 56,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.blueShadeText,
           shape: RoundedRectangleBorder(
@@ -20,17 +28,26 @@ class SubmitButton extends StatelessWidget {
           ),
           elevation: 0,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.menu_book_rounded, color: Colors.white, size: 18),
-            const SizedBox(width: 10),
-            Text(
-              'Add to Recipe Notebook',
-              style: tt.labelLarge?.copyWith(color: Colors.white, fontSize: 15),
-            ),
-          ],
-        ),
+        child: isLoading
+            ? const SizedBox(
+                width: 24,
+                height: 24,
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                  strokeWidth: 2.5,
+                ),
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.menu_book_rounded, color: Colors.white, size: 18),
+                  const SizedBox(width: 10),
+                  Text(
+                    'Add to Recipe Notebook',
+                    style: tt.labelLarge?.copyWith(color: Colors.white, fontSize: 15),
+                  ),
+                ],
+              ),
       ),
     );
   }

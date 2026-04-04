@@ -1,10 +1,10 @@
 import 'package:go_router/go_router.dart';
+import '../../feature/add_recipe/add_recipe_provider.dart';
 import 'app_routes.dart';
 import '../../feature/auth/presentation/pages/splash/splash_screen.dart';
 import '../../utils/shared/floating_navigationbar.dart';
 import '../error/error_screen.dart';
 import '../../feature/recipe_details/presentation/pages/recipe_detail_page.dart';
-import '../../feature/add_recipe/presentation/pages/add_recipe_page.dart';
 import '../../feature/home/presentation/pages/home_page.dart';
 import '../../feature/auth/presentation/pages/login_page.dart';
 
@@ -30,7 +30,7 @@ class AppRouter {
 
       GoRoute(
         path: AppRoutes.addRecipe,
-        builder: (context, state) => const AddRecipePage(),
+        builder: (context, state) => const AddRecipeProvider(),
       ),
 
       GoRoute(

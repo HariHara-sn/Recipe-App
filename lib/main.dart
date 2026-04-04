@@ -6,6 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:recepieapp/core/theme/app_theme.dart';
 import 'package:recepieapp/utils/constants/constants.dart';
+import 'package:recepieapp/utils/shared/custom_snack_bar.dart';
 
 import 'core/router/app_router.dart';
 import 'core/services/bloc_observer.dart';
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         title: 'Recipe App',
+        scaffoldMessengerKey: CustomSnackBar.scaffoldMessengerKey,
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.router,

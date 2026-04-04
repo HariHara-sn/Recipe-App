@@ -1,0 +1,5 @@
+Analyzing add_recipe_page.dart...
+
+  error - add_recipe_page.dart:73:29 - The getter 'selectedUnit' isn't defined for the type 'IngredientRow'. Try importing the library that defines 'selectedUnit', correcting the name to the name of an existing getter, or defining a getter or field named 'selectedUnit'. - undefined_getter
+
+1 issue found.

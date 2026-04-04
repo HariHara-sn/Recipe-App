@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:recepieapp/feature/add_recipe/presentation/pages/add_recipe_page.dart';
+import 'package:recepieapp/feature/add_recipe/add_recipe_provider.dart';
 import 'package:recepieapp/feature/home/presentation/pages/home_page.dart';
 import 'package:recepieapp/feature/profile/presentation/profile_page.dart';
 import 'package:recepieapp/feature/search_recipe/presentation/pages/searchRecipePage.dart';
@@ -25,7 +25,7 @@ class _FloatingNavBarState extends State<FloatingNavBar> {
   final List<Widget> _pages = const [
     HomePage(),
     PantrySearchPage(),
-    AddRecipePage(),
+    AddRecipeProvider(),
     ProfileScreen(),
   ];
 
