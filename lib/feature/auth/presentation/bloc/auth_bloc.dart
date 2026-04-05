@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recepieapp/core/logging/logger.dart';
+import 'package:recepieapp/feature/auth/data/failure.dart';
 
 import '../../domain/models/user_model.dart';
 import '../../domain/repositories/auth_repository.dart';
@@ -21,7 +22,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this._authRepository) : super(const AuthInitial()) {
     on<AppStarted>(_onAppStarted);
     on<GoogleSignInRequested>(_onGoogleSignInRequested);
-    on<SignOutRequested>(_onSignOutRequested);
+    on<LogoutRequested>(_onLogout);
+    on<ForgotPasswordRequested>(_onForgotPassword);
   }
 
   // ── AppStarted ─────────────────────────────────────────────────
@@ -38,7 +40,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   //   • null       → when user signs out or token is revoked
   Future<void> _onAppStarted(AppStarted event, Emitter<AuthState> emit) async {
     // Show cached user instantly while the async stream is starting up
-    final cached = _authRepository.getCachedUser();
+    final cached = _authRepository.getCurrentProfile();
     if (cached != null) {
       emit(AuthAuthenticated(cached));
       logger.i("successfully loggedIn");
@@ -83,17 +85,31 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  // ── SignOutRequested ───────────────────────────────────────────
-  Future<void> _onSignOutRequested(
-    SignOutRequested event,
+  Future<void> _onLogout(
+    LogoutRequested event,
     Emitter<AuthState> emit,
   ) async {
     emit(const AuthLoading());
     try {
-      await _authRepository.signOut();
+      await _authRepository.logOut();
       // Stream from _onAppStarted will fire AuthUnauthenticated automatically
     } catch (e) {
       emit(AuthError(message: 'Sign-out failed.\n${e.toString()}'));
+    }
+  }
+
+    Future<void> _onForgotPassword(
+    ForgotPasswordRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(const AuthLoading());
+    try {
+      await _authRepository.sendPasswordResetEmail(event.email);
+      emit(ProfilePasswordResetSent(event.email));
+    } on AuthFailure catch (f) {
+       emit(AuthError(message: f.message));
+    } catch (e) {
+      emit(AuthError(message: 'Unexpected error: $e'));
     }
   }
 }

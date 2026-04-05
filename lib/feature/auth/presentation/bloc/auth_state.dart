@@ -39,6 +39,17 @@ class AuthUnauthenticated extends AuthState {
   const AuthUnauthenticated();
 }
 
+/// Password reset email sent successfully
+final class ProfilePasswordResetSent extends AuthState {
+  final String email;
+  const ProfilePasswordResetSent(this.email);
+}
+
+/// Logout completed — UI should navigate to login
+final class LoggedOutState extends AuthState {
+  const LoggedOutState();
+}
+
 /// An error occurred during sign-in or sign-out.
 /// Show [message] to the user (SnackBar, dialog, etc.).
 class AuthError extends AuthState {

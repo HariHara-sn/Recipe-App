@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/core/theme/app_images.dart';
 
 class SplashAnimation extends StatefulWidget {
   const SplashAnimation({super.key});
@@ -19,7 +20,7 @@ class _SplashAnimationState extends State<SplashAnimation>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1400),
+      duration: const Duration(milliseconds: 1500),
     );
 
     _scale = TweenSequence<double>([
@@ -62,7 +63,8 @@ class _SplashAnimationState extends State<SplashAnimation>
         child: const Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            FlutterLogo(size: 90),
+            // FlutterLogo(size: 90),
+            Image(image: AssetImage(AppImages.applogo), width: 120, height: 120),
             SizedBox(height: 24),
             Text(
               "Recipe App",

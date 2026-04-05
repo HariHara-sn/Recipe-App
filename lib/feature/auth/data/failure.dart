@@ -1,20 +1,23 @@
-class Failure {
+class AuthFailure{
   final String message;
-  Failure(this.message);
+  const AuthFailure(this.message);
+
+  factory AuthFailure.userNotFound() =>
+      const AuthFailure('No signed-in user found.');
+
+  factory AuthFailure.passwordResetFailed(String details) =>
+      AuthFailure('Password reset failed: $details');
+
+  factory AuthFailure.logoutFailed(String details) =>
+      AuthFailure('Logout failed: $details');
+
+  factory AuthFailure.unknown(String details) =>
+      AuthFailure('Unexpected error: $details');
+
+  @override
+  String toString() => message;
 }
 
-
-class ApiResponse {
-  final String message;
-
-  ApiResponse({required this.message});
-
-  factory ApiResponse.fromJson(Map<String, dynamic> json) {
-    return ApiResponse(
-      message: json['message'] ?? 'Something went wrong',
-    );
-  }
-}
  // instead use the exception class to handle errors
 
 

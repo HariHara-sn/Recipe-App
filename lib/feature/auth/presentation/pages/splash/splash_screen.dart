@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 
 import '../../bloc/auth_bloc.dart';
 import '../../bloc/auth_state.dart';
@@ -12,6 +13,7 @@ class InitialSplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) => SplashNavigator.handleNavigation(context, state),
         child: const Center(child: SplashAnimation()),

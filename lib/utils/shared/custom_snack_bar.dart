@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../core/theme/app_colors.dart';
 
-enum SnackBarType { success, failure }
+enum SnackBarType { success, failure, info }
 
 class CustomSnackBar {
-  static GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
-      GlobalKey<ScaffoldMessengerState>();
+  static GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
   static void showSnackBar(String message, SnackBarType type) {
     Color backgroundColor;
@@ -16,6 +15,8 @@ class CustomSnackBar {
         break;
       case SnackBarType.failure:
         backgroundColor = AppColors.red;
+      case SnackBarType.info:
+        backgroundColor = AppColors.info;
         break;
     }
 

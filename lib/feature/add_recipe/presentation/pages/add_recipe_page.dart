@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../../core/theme/app_colors.dart';
+import '../../../../core/logging/logger.dart';
 import '../../../../feature/add_recipe/presentation/bloc/add_recipe_bloc.dart';
 import '../../../../feature/add_recipe/presentation/widgets/cooking_step_field.dart';
 import '../../../../feature/add_recipe/presentation/widgets/field_label.dart';
@@ -18,8 +20,6 @@ import '../../../../feature/add_recipe/presentation/widgets/serving_dropdown.dar
 import '../../../../feature/add_recipe/presentation/widgets/styled_text_field.dart';
 import '../../../../feature/add_recipe/presentation/widgets/submit_button.dart';
 import '../../../../feature/home/presentation/widgets/app_bar.dart';
-import '../../../../../core/theme/app_colors.dart';
-import '../../../../core/logging/logger.dart';
 import '../../../../utils/shared/custom_snack_bar.dart';
 import '../../domain/models/ingredient_model.dart';
 import '../../domain/models/step_model.dart';
@@ -45,22 +45,20 @@ class _AddRecipePageState extends State<AddRecipePage> {
     if (picked != null) setState(() => _dishImage = File(picked.path));
   }
 
+
   void _onSubmit() {
     if (_dishImage == null) {
-      _showSnackBar('Please pick a dish image.', isSuccess: false);
+      CustomSnackBar.showSnackBar('Please pick a dish image.', SnackBarType.failure);
       return;
     }
     if (_titleController.text.trim().isEmpty) {
-      _showSnackBar('Please enter a recipe title.', isSuccess: false);
+      CustomSnackBar.showSnackBar('Please enter a recipe title.', SnackBarType.failure);
       return;
     }
 
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
-      _showSnackBar(
-        'You must be signed in to save a recipe.',
-        isSuccess: false,
-      );
+      CustomSnackBar.showSnackBar('You must be signed in to save a recipe.', SnackBarType.failure);
       return;
     }
 
@@ -68,7 +66,8 @@ class _AddRecipePageState extends State<AddRecipePage> {
       AddRecipeSubmitted(
         localImagePath: _dishImage!.path,
         title: _titleController.text.trim(),
-        ingredients: _ingredients.where((e) => e.nameCtrl.text.trim().isNotEmpty)
+        ingredients: _ingredients
+            .where((e) => e.nameCtrl.text.trim().isNotEmpty)
             .map(
               (e) => IngredientModel(
                 name: e.nameCtrl.text.trim(),
@@ -97,13 +96,6 @@ class _AddRecipePageState extends State<AddRecipePage> {
     );
   }
 
-  void _showSnackBar(String msg, {bool isSuccess = false}) {
-    CustomSnackBar.showSnackBar(
-      msg,
-      isSuccess ? SnackBarType.success : SnackBarType.failure,
-    );
-  }
-
   @override
   void dispose() {
     _titleController.dispose();
@@ -127,7 +119,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
       listener: (context, state) {
         if (state is AddRecipeSuccess) {
           logger.i('Recipe saved successfully');
-          _showSnackBar('Recipe saved successfully! 🎉', isSuccess: true);
+          CustomSnackBar.showSnackBar('Recipe saved successfully!', SnackBarType.success);
           context.read<AddRecipeBloc>().add(AddRecipeReset());
 
           setState(() {
@@ -152,7 +144,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
           });
         } else if (state is AddRecipeFailureState) {
           logger.e('Failed to save recipe: ${state.message}');
-          _showSnackBar(state.message, isSuccess: false);
+          CustomSnackBar.showSnackBar(state.message, SnackBarType.failure);
         }
       },
       child: Scaffold(
@@ -316,8 +308,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
                             }),
 
                             FullWidthIconButton(
-                              onPressed: () =>
-                                  setState(() => _steps.add(StepRow())),
+                              onPressed: () => setState(() => _steps.add(StepRow())),
                               icon: Icons.add_circle_outline,
                               label: "Add Step",
                               textStyle: tt.labelLarge?.copyWith(

@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive/hive.dart';
+import 'package:recepieapp/core/logging/logger.dart';
 
 import '../../../../utils/constants/constants.dart';
 import '../../domain/models/user_model.dart';
+import '../failure.dart';
 
 /// ONLY file in the project that imports firebase_auth or google_sign_in.
 /// Responsibilities:
@@ -27,9 +29,9 @@ class FirebaseAuthDataSource {
     FirebaseAuth? firebaseAuth,
     GoogleSignIn? googleSignIn,
     Box? authBox,
-  })  : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
-        _googleSignIn = googleSignIn ?? GoogleSignIn(),
-        _authBox = authBox ?? Hive.box(HiveBoxes.auth);
+  }) : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
+       _googleSignIn = googleSignIn ?? GoogleSignIn(),
+       _authBox = authBox ?? Hive.box(HiveBoxes.auth);
   // Injectable constructor allows unit-testing with mocks ^
 
   // ── Streams ────────────────────────────────────────────────────
@@ -72,8 +74,7 @@ class FirebaseAuthDataSource {
     );
 
     // Step 4: Sign into Firebase
-    final userCredential =
-        await _firebaseAuth.signInWithCredential(credential);
+    final userCredential = await _firebaseAuth.signInWithCredential(credential);
 
     final user = userCredential.user;
     if (user == null) {
@@ -90,28 +91,39 @@ class FirebaseAuthDataSource {
     // triggering Authenticated state in AuthBloc without any extra emit.
   }
 
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw AuthFailure.passwordResetFailed(e.message ?? e.code);
+    } catch (e) {
+      throw AuthFailure.unknown(e.toString());
+    }
+  }
 
-  Future<void> signOut() async {
+  Future<void> logOut() async {
     // Run both sign-outs in parallel for speed
     await Future.wait([
-      _googleSignIn.signOut(),
-      _firebaseAuth.signOut(),
+      _googleSignIn.signOut(), 
+      _firebaseAuth.signOut()
     ]);
     await _authBox.delete(_cachedUserKey);
     // authStateChanges stream emits null automatically after firebaseAuth.signOut()
+
+    // AuthFailure.logoutFailed(e.toString());
   }
 
-  // ── Cache ──────────────────────────────────────────────────────
-
   /// Synchronous — reads from in-memory Hive box, no async needed.
-  UserModel? getCachedUser() {
+  UserModel? getCurrentProfile() {
     try {
       final raw = _authBox.get(_cachedUserKey);
       if (raw == null) return null;
+      logger.d(raw as String);
       return UserModel.fromJson(jsonDecode(raw as String));
-    } catch (_) {
+    } catch (err) {
       // Corrupt cache — silently clear and return null
       _authBox.delete(_cachedUserKey);
+      logger.e(err);
       return null;
     }
   }

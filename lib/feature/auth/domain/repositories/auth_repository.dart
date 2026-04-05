@@ -22,11 +22,13 @@ abstract class AuthRepository {
   /// Throws [Exception] if the user cancels or Firebase rejects.
   Future<UserModel> signInWithGoogle();
 
-  /// Signs out from Google + Firebase, clears local Hive cache.
-  Future<void> signOut();
+//   /// Signs out from Google + Firebase + clears local Hive cache
+  Future<void> logOut();
+
+  Future<void> sendPasswordResetEmail(String email);
 
   /// Returns the user last persisted to Hive.
   /// Used on cold start before the async [getAuthState] stream fires,
   /// so the UI can show cached data instantly with no flicker.
-  UserModel? getCachedUser();
+  UserModel? getCurrentProfile();
 }

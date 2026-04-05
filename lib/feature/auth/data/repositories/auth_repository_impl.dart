@@ -1,6 +1,7 @@
 import '../../domain/models/user_model.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../datasources/firebase_auth_datasource.dart';
+import '../failure.dart';
 
 /// Concrete implementation of [AuthRepository].
 ///
@@ -21,12 +22,8 @@ class AuthRepositoryImpl implements AuthRepository {
 
   const AuthRepositoryImpl(this._dataSource);
 
-  // ── Contract implementation 
-
   @override
   Stream<UserModel?> getAuthState() {
-    // Delegate straight to DataSource stream.
-    // Add any stream transformation / business rules here if needed.
     return _dataSource.authStateChanges;
   }
 
@@ -42,16 +39,28 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> signOut() async {
+  Future<void> logOut() async {
     try {
-      await _dataSource.signOut();
+      await _dataSource.logOut();
     } on Exception {
       rethrow;
     }
   }
 
+  // Hari - below we have custom exception but in above didnt imple. why?
   @override
-  UserModel? getCachedUser() {
-    return _dataSource.getCachedUser();
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _dataSource.sendPasswordResetEmail(email);
+    } on AuthFailure {
+      rethrow;
+    } catch (e) {
+      throw AuthFailure.unknown(e.toString());
+    }
+  }
+
+  @override
+  UserModel? getCurrentProfile() {
+    return _dataSource.getCurrentProfile();
   }
 }

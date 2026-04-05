@@ -2,8 +2,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:recepieapp/feature/add_recipe/add_recipe_provider.dart';
 import 'package:recepieapp/feature/home/presentation/pages/home_page.dart';
-import 'package:recepieapp/feature/profile/presentation/profile_page.dart';
 import 'package:recepieapp/feature/search_recipe/presentation/pages/searchRecipePage.dart';
+
+import '../../feature/profile/profile_provider.dart';
 
 class FloatingNavBar extends StatefulWidget {
   const FloatingNavBar({super.key});
@@ -26,7 +27,7 @@ class _FloatingNavBarState extends State<FloatingNavBar> {
     HomePage(),
     PantrySearchPage(),
     AddRecipeProvider(),
-    ProfileScreen(),
+    ProfileProvider()
   ];
 
   void _onItemTapped(int index) {
