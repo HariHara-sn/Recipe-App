@@ -5,13 +5,15 @@ import 'package:recepieapp/core/router/app_routes.dart';
 import 'package:recepieapp/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:recepieapp/feature/auth/presentation/bloc/auth_event.dart';
 import 'package:recepieapp/feature/auth/presentation/bloc/auth_state.dart';
-import 'package:recepieapp/feature/profile/presentation/about/about_page.dart';
 import 'package:recepieapp/feature/profile/presentation/widgets/forgot_password_dialog.dart';
 import 'package:recepieapp/feature/profile/presentation/widgets/profile_avatar.dart';
 import 'package:recepieapp/feature/profile/presentation/widgets/profile_logout_button.dart';
 import 'package:recepieapp/feature/profile/presentation/widgets/profile_menu_card.dart';
 import 'package:recepieapp/feature/profile/presentation/widgets/profile_quote_card.dart';
 import 'package:recepieapp/feature/profile/presentation/widgets/profile_stats_card.dart';
+import 'package:recepieapp/utils/shared/custom_snack_bar.dart';
+
+import '../../../../core/theme/app_colors.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -30,7 +32,6 @@ class _ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<_ProfileView> {
-  // Stats — will be implemented later
   final int _recipesShared = 42;
   final int _cooked = 128;
   final int _saved = 15;
@@ -55,15 +56,15 @@ class _ProfileViewState extends State<_ProfileView> {
         title: Text(
           'Log out?',
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            color: const Color(0xFF1A1A2E),
+            color: AppColors.borderColor,
             fontSize: 20,
           ),
         ),
         content: Text(
           'Are you sure you want to log out?',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: const Color(0xFF6B6B8A),
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: AppColors.blueShadeText),
         ),
         actions: [
           TextButton(
@@ -71,7 +72,7 @@ class _ProfileViewState extends State<_ProfileView> {
             child: Text(
               'Cancel',
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: const Color(0xFF9090AA),
+                color: AppColors.blueShadeButtonColor.withOpacity(0.6),
               ),
             ),
           ),
@@ -82,9 +83,9 @@ class _ProfileViewState extends State<_ProfileView> {
             },
             child: Text(
               'Log out',
-              style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: const Color(0xFFD64545),
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.labelLarge?.copyWith(color: AppColors.red),
             ),
           ),
         ],
@@ -93,10 +94,7 @@ class _ProfileViewState extends State<_ProfileView> {
   }
 
   void _onAboutUs() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => const AboutPage()),
-    );
+    context.go(AppRoutes.about);
   }
 
   @override
@@ -108,19 +106,12 @@ class _ProfileViewState extends State<_ProfileView> {
         if (state is AuthUnauthenticated) {
           context.go(AppRoutes.login);
         } else if (state is ProfilePasswordResetSent) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Password reset email sent to ${state.email}'),
-              backgroundColor: Colors.green,
-            ),
+          CustomSnackBar.showSnackBar(
+            'Password reset email sent to ${state.email}',
+            SnackBarType.success,
           );
         } else if (state is AuthError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-              backgroundColor: Colors.redAccent,
-            ),
-          );
+          CustomSnackBar.showSnackBar(state.message, SnackBarType.failure);
         }
       },
       child: BlocBuilder<AuthBloc, AuthState>(
@@ -129,7 +120,7 @@ class _ProfileViewState extends State<_ProfileView> {
           final isLoading = state is AuthLoading;
 
           return Scaffold(
-            backgroundColor: const Color(0xFFF4F3FB),
+            backgroundColor: AppColors.softlavenderWhiteBackground,
             extendBody: true,
             body: Stack(
               children: [
@@ -139,32 +130,15 @@ class _ProfileViewState extends State<_ProfileView> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // ── Top bar ──────────────────────────────────────
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'My Diary',
-                                style: tt.headlineMedium?.copyWith(
-                                  color: const Color(0xFF3D3A8C),
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 22,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  // TODO: navigate to edit profile screen
-                                },
-                                icon: const Icon(
-                                  Icons.settings_outlined,
-                                  color: Color(0xFF3D3A8C),
-                                  size: 26,
-                                ),
-                                tooltip: 'Edit Profile',
-                              ),
-                            ],
+                          child: Text(
+                            'My Diary',
+                            style: tt.headlineMedium?.copyWith(
+                              color: AppColors.blueShadeText,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 22,
+                            ),
                           ),
                         ),
 
@@ -174,7 +148,6 @@ class _ProfileViewState extends State<_ProfileView> {
 
                         const SizedBox(height: 16),
 
-                        // ── Name ─────────────────────────────────────────
                         Center(
                           child: isLoading
                               ? const SizedBox(
@@ -182,13 +155,13 @@ class _ProfileViewState extends State<_ProfileView> {
                                   width: 28,
                                   child: CircularProgressIndicator(
                                     strokeWidth: 2.5,
-                                    color: Color(0xFF3D3A8C),
+                                    color: AppColors.blueShadeText,
                                   ),
                                 )
                               : Text(
                                   user?.name ?? '',
                                   style: tt.headlineLarge?.copyWith(
-                                    color: const Color(0xFF1A1A2E),
+                                    color: AppColors.blackShadeText,
                                     fontSize: 26,
                                     fontWeight: FontWeight.w800,
                                   ),
@@ -196,12 +169,11 @@ class _ProfileViewState extends State<_ProfileView> {
                         ),
                         const SizedBox(height: 4),
 
-                        // ── Email ─────────────────────────────────────────
                         Center(
                           child: Text(
                             user?.email ?? '',
                             style: tt.bodyMedium?.copyWith(
-                              color: const Color(0xFF9090AA),
+                              color: AppColors.blueShade3,
                             ),
                           ),
                         ),
@@ -220,13 +192,12 @@ class _ProfileViewState extends State<_ProfileView> {
 
                         const SizedBox(height: 28),
 
-                        // ── Account & Settings label ──────────────────────
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
                           child: Text(
                             'ACCOUNT & SETTINGS',
                             style: tt.bodySmall?.copyWith(
-                              color: const Color(0xFF1A1A2E),
+                              color: AppColors.blackShadeText,
                               fontWeight: FontWeight.w800,
                               letterSpacing: 1.4,
                             ),

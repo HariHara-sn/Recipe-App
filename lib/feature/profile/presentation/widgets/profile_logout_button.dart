@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 
 class ProfileLogoutButton extends StatelessWidget {
   final bool isLoading;
@@ -27,16 +28,23 @@ class ProfileLogoutButton extends StatelessWidget {
                   height: 18,
                   child: CircularProgressIndicator(
                     strokeWidth: 2,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                 )
-              : const Icon(Icons.logout_rounded, color: Colors.white, size: 20),
+              : const Icon(
+                  Icons.logout_rounded,
+                  color: AppColors.white,
+                  size: 20,
+                ),
           label: Text(
             isLoading ? 'Logging out...' : 'Logout',
-            style: tt.labelLarge?.copyWith(color: Colors.white, fontSize: 16),
+            style: tt.labelLarge?.copyWith(
+              color: AppColors.white,
+              fontSize: 16,
+            ),
           ),
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFFD64545),
+            backgroundColor: AppColors.red,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(28),
             ),

@@ -118,7 +118,7 @@ class FirebaseAuthDataSource {
     try {
       final raw = _authBox.get(_cachedUserKey);
       if (raw == null) return null;
-      logger.d(raw as String);
+      // logger.f("User Details: ",raw as String);
       return UserModel.fromJson(jsonDecode(raw as String));
     } catch (err) {
       // Corrupt cache — silently clear and return null

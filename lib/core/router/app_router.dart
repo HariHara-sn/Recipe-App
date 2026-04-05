@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import '../../feature/add_recipe/add_recipe_provider.dart';
+import '../../feature/profile/presentation/about/about_page.dart';
 import 'app_routes.dart';
 import '../../feature/auth/presentation/pages/splash/splash_screen.dart';
 import '../../utils/shared/floating_navigationbar.dart';
@@ -42,6 +43,10 @@ class AppRouter {
         path: AppRoutes.bottomNav,
         builder: (context, state) => const FloatingNavBar(),
       ),
+      GoRoute(
+        path: AppRoutes.about,
+        builder: (context, state) => const AboutPage(),
+      )
 
     ],
 

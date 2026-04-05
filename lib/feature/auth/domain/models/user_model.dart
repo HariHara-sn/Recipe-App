@@ -77,6 +77,5 @@ class UserModel extends Equatable {
   }
 
   @override
-  String toString() =>
-      'UserModel(uid: $uid, name: $name, email: $email)';
+  String toString() => 'UserModel(uid: $uid, name: $name, email: $email)';
 }

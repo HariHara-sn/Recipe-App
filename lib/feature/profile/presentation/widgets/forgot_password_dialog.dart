@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 
 class ForgotPasswordDialog extends StatefulWidget {
   final String prefillEmail;
@@ -38,7 +39,7 @@ class _ForgotPasswordDialogState extends State<ForgotPasswordDialog> {
       title: Text(
         'Reset Password',
         style: tt.headlineMedium?.copyWith(
-          color: const Color(0xFF1A1A2E),
+          color: AppColors.blackShadeText,
           fontSize: 20,
         ),
       ),
@@ -47,7 +48,7 @@ class _ForgotPasswordDialogState extends State<ForgotPasswordDialog> {
         children: [
           Text(
             "Enter your email and we'll send a reset link.",
-            style: tt.bodyMedium?.copyWith(color: const Color(0xFF6B6B8A)),
+            style: tt.bodyMedium?.copyWith(color: AppColors.blueShade3),
           ),
           const SizedBox(height: 16),
           TextField(
@@ -71,7 +72,7 @@ class _ForgotPasswordDialogState extends State<ForgotPasswordDialog> {
           onPressed: () => Navigator.pop(context),
           child: Text(
             'Cancel',
-            style: tt.labelLarge?.copyWith(color: const Color(0xFF9090AA)),
+            style: tt.labelLarge?.copyWith(color: AppColors.blueShade3),
           ),
         ),
         TextButton(
@@ -84,7 +85,7 @@ class _ForgotPasswordDialogState extends State<ForgotPasswordDialog> {
           },
           child: Text(
             'Send Link',
-            style: tt.labelLarge?.copyWith(color: const Color(0xFF3D3A8C)),
+            style: tt.labelLarge?.copyWith(color: AppColors.blueShadeText),
           ),
         ),
       ],

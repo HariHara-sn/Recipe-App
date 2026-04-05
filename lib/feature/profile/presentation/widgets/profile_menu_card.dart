@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 
 class ProfileMenuCard extends StatelessWidget {
   final VoidCallback onForgotPassword;
@@ -84,26 +85,26 @@ class _MenuButton extends StatelessWidget {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF3D3A8C).withOpacity(0.08),
+                      color: AppColors.blueShadeButtonColor.withOpacity(0.08),
                       blurRadius: 8,
                     ),
                   ],
                 ),
-                child: Icon(icon, color: const Color(0xFF3D3A8C), size: 18),
+                child: Icon(icon, color: AppColors.blueShadeButtonColor, size: 18),
               ),
               const SizedBox(width: 14),
               Expanded(
                 child: Text(
                   label,
                   style: tt.bodyLarge?.copyWith(
-                    color: const Color(0xFF1A1A2E),
+                    color: AppColors.blackShadeText,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
               const Icon(
                 Icons.chevron_right_rounded,
-                color: Color(0xFF9090AA),
+                color: AppColors.blueShade3,
                 size: 20,
               ),
             ],
@@ -115,7 +116,7 @@ class _MenuButton extends StatelessWidget {
             child: Divider(
               height: 1,
               thickness: 1,
-              color: const Color(0xFF3D3A8C).withOpacity(0.08),
+              color: AppColors.blackShadeText.withOpacity(0.08),
             ),
           ),
       ],

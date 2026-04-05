@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_colors.dart';
+
 class ProfileQuoteCard extends StatelessWidget {
   final String quote;
 
@@ -35,13 +37,13 @@ class ProfileQuoteCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: -14,
+            top: -1,
             left: 16,
             child: Text(
               '"',
               style: TextStyle(
                 fontSize: 52,
-                color: const Color(0xFF3D3A8C).withOpacity(0.25),
+                color: AppColors.blueShadeText.withOpacity(0.25),
                 height: 1,
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 
 class ProfileStatsCard extends StatelessWidget {
   final int recipesShared;
@@ -25,7 +26,7 @@ class ProfileStatsCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF3D3A8C).withOpacity(0.06),
+              color: AppColors.blueShadeButtonColor.withOpacity(0.06),
               blurRadius: 16,
               offset: const Offset(0, 4),
             ),
@@ -33,7 +34,7 @@ class ProfileStatsCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            _StatItem(value: recipesShared, label: 'RECIPES\nSHARED', tt: tt),
+            _StatItem(value: recipesShared, label: 'RECIPESSHARED', tt: tt),
             _VerticalDivider(),
             _StatItem(value: cooked, label: 'COOKED', tt: tt),
             _VerticalDivider(),
@@ -60,7 +61,7 @@ class _StatItem extends StatelessWidget {
           Text(
             '$value',
             style: tt.headlineLarge?.copyWith(
-              color: const Color(0xFF3D3A8C),
+              color: AppColors.blueShadeText,
               fontSize: 28,
               fontWeight: FontWeight.w800,
             ),
@@ -70,7 +71,7 @@ class _StatItem extends StatelessWidget {
             label,
             textAlign: TextAlign.center,
             style: tt.bodySmall?.copyWith(
-              color: const Color(0xFF9090AA),
+              color: AppColors.blueShade3,
               letterSpacing: 0.8,
               fontSize: 11,
               fontWeight: FontWeight.w600,
