@@ -94,7 +94,7 @@ class _ProfileViewState extends State<_ProfileView> {
   }
 
   void _onAboutUs() {
-    context.go(AppRoutes.about);
+    context.push(AppRoutes.about);
   }
 
   @override

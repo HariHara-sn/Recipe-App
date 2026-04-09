@@ -14,7 +14,7 @@ class HeroRecipeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go(AppRoutes.recipeDetails);
+        context.push(AppRoutes.recipeDetails);
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(24),

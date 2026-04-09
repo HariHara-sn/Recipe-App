@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class StartCookingButton extends StatelessWidget {
   final TextTheme tt;
@@ -16,7 +17,9 @@ class StartCookingButton extends StatelessWidget {
           height: 58,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pop(context);
+              if (context.canPop()) {
+                context.pop();
+              }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF3D3A8C),

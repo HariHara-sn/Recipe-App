@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../utils/constants/constants.dart';
-
-
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -23,19 +23,19 @@ class AboutPage extends StatelessWidget {
       backgroundColor: const Color(0xFFF4F3FB),
       body: CustomScrollView(
         slivers: [
-          // ── App Bar ────────────────────────────────────────────────────
+          // ── App Bar
           SliverAppBar(
             expandedHeight: 220,
             pinned: true,
             backgroundColor: const Color(0xFF2A2672),
             leading: IconButton(
-              icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                  color: Colors.white),
-              onPressed: () => Navigator.pop(context),
+              icon: const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Colors.white,
+              ),
+              onPressed: () => context.pop(),
             ),
-            flexibleSpace: FlexibleSpaceBar(
-              background: _HeroHeader(),
-            ),
+            flexibleSpace: FlexibleSpaceBar(background: _HeroHeader()),
             title: const Text(
               'About Us',
               style: TextStyle(
@@ -60,55 +60,55 @@ class AboutPage extends StatelessWidget {
                   const SizedBox(height: 32),
 
                   // ── About section ────────────────────────────────────
-                  _SectionCard(
-                    emoji: '🌸',
+                  const _SectionCard(
+                    emoji: '',
                     title: 'About the Project',
-                    child: const _AboutText(),
+                    child: _AboutText(),
                   ),
 
                   const SizedBox(height: 20),
 
                   // ── Key Features ─────────────────────────────────────
-                  _SectionCard(
-                    emoji: '✨',
+                  const _SectionCard(
+                    emoji: '',
                     title: 'Key Features',
-                    child: const _FeaturesList(),
+                    child: _FeaturesList(),
                   ),
 
                   const SizedBox(height: 20),
 
                   // ── Our Motive ───────────────────────────────────────
-                  _SectionCard(
+                  const _SectionCard(
                     emoji: '🎯',
                     title: 'Our Motive',
-                    child: const _MotiveContent(),
+                    child: _MotiveContent(),
                   ),
 
                   const SizedBox(height: 20),
 
                   // ── Use Cases ────────────────────────────────────────
-                  _SectionCard(
+                  const _SectionCard(
                     emoji: '🍲',
                     title: 'Use Cases',
-                    child: const _UseCasesList(),
+                    child: _UseCasesList(),
                   ),
 
                   const SizedBox(height: 20),
 
                   // ── What Makes Us Special ────────────────────────────
-                  _SectionCard(
+                  const _SectionCard(
                     emoji: '🚀',
                     title: 'What Makes Us Special',
-                    child: const _SpecialList(),
+                    child: _SpecialList(),
                   ),
 
                   const SizedBox(height: 20),
 
                   // ── Comparison table ─────────────────────────────────
-                  _SectionCard(
-                    emoji: '🔄',
+                  const _SectionCard(
+                    emoji: '',
                     title: 'Compared to Other Apps',
-                    child: const _ComparisonTable(),
+                    child: _ComparisonTable(),
                   ),
 
                   const SizedBox(height: 20),
@@ -242,7 +242,7 @@ class _SloganRow extends StatelessWidget {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: _slogans.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 12),
+        separatorBuilder: (_, _) => const SizedBox(width: 12),
         itemBuilder: (_, i) => Container(
           width: 148,
           padding: const EdgeInsets.all(14),
@@ -344,11 +344,7 @@ class _AboutText extends StatelessWidget {
       'and athai across generations.\n\n'
       'This app blends traditional cooking culture with modern technology, making it easier '
       'to store recipes and find what to cook using the ingredients already available at home.',
-      style: TextStyle(
-        color: Color(0xFF4A4A6A),
-        fontSize: 14.5,
-        height: 1.7,
-      ),
+      style: TextStyle(color: Color(0xFF4A4A6A), fontSize: 14.5, height: 1.7),
     );
   }
 }
@@ -443,9 +439,6 @@ class _FeaturesList extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// MOTIVE CONTENT
-// ─────────────────────────────────────────────────────────────────────────────
 class _MotiveContent extends StatelessWidget {
   const _MotiveContent();
 
@@ -456,10 +449,14 @@ class _MotiveContent extends StatelessWidget {
       children: [
         const Text(
           'Our goal is to preserve the emotional and cultural value of home cooking while making it accessible in a modern way.',
-          style: TextStyle(color: Color(0xFF4A4A6A), fontSize: 14.5, height: 1.7),
+          style: TextStyle(
+            color: Color(0xFF4A4A6A),
+            fontSize: 14.5,
+            height: 1.7,
+          ),
         ),
         const SizedBox(height: 12),
-        _SubHeading('Many traditional recipes are:'),
+        const _SubHeading('Many traditional recipes are:'),
         const SizedBox(height: 6),
         ...[
           'Forgotten over time',
@@ -467,7 +464,7 @@ class _MotiveContent extends StatelessWidget {
           'Hard to organize and reuse',
         ].map((t) => _BulletItem(text: t, negative: true)),
         const SizedBox(height: 10),
-        _SubHeading('We aim to:'),
+        const _SubHeading('We aim to:'),
         const SizedBox(height: 6),
         ...[
           'Digitally preserve these recipes',
@@ -485,13 +482,13 @@ class _SubHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Text(
-        text,
-        style: const TextStyle(
-          color: Color(0xFF2A2672),
-          fontWeight: FontWeight.w700,
-          fontSize: 13.5,
-        ),
-      );
+    text,
+    style: const TextStyle(
+      color: Color(0xFF2A2672),
+      fontWeight: FontWeight.w700,
+      fontSize: 13.5,
+    ),
+  );
 }
 
 class _BulletItem extends StatelessWidget {
@@ -509,7 +506,9 @@ class _BulletItem extends StatelessWidget {
           Text(
             negative ? '✗  ' : '✓  ',
             style: TextStyle(
-              color: negative ? const Color(0xFFD64545) : const Color(0xFF3D8C6A),
+              color: negative
+                  ? AppColors.error
+                  : AppColors.green,
               fontWeight: FontWeight.w700,
               fontSize: 13,
             ),
@@ -530,17 +529,14 @@ class _BulletItem extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// USE CASES LIST
-// ─────────────────────────────────────────────────────────────────────────────
 class _UseCasesList extends StatelessWidget {
   const _UseCasesList();
 
-  static const _cases = [
-    ('👩‍🍳', 'Home cooks storing family recipes'),
-    ('👵', 'Elders who prefer simple, voice-based interaction'),
-    ('🧑‍🎓', 'Students or bachelors deciding what to cook with limited ingredients'),
-    ('👨‍👩‍👧', 'Families sharing recipes across generations'),
+  static const List<String> _cases = [
+    'Home cooks storing family recipes',
+    'Elders who prefer simple, voice-based interaction',
+    'Students or bachelors deciding what to cook with limited ingredients',
+    'Families sharing recipes across generations',
   ];
 
   @override
@@ -552,11 +548,11 @@ class _UseCasesList extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 10),
               child: Row(
                 children: [
-                  Text(c.$1, style: const TextStyle(fontSize: 22)),
+                 const Text('-', style: const TextStyle(fontSize: 22)),
                   const SizedBox(width: 14),
                   Expanded(
                     child: Text(
-                      c.$2,
+                      c,
                       style: const TextStyle(
                         color: Color(0xFF4A4A6A),
                         fontSize: 14,
@@ -573,9 +569,6 @@ class _UseCasesList extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// SPECIAL LIST
-// ─────────────────────────────────────────────────────────────────────────────
 class _SpecialList extends StatelessWidget {
   const _SpecialList();
 
@@ -589,11 +582,6 @@ class _SpecialList extends StatelessWidget {
       '🧠',
       'Smart Ingredient Matching',
       'Instead of searching for recipes manually, the app thinks for you and suggests dishes based on what you have.',
-    ),
-    (
-      '🎤',
-      'Built for Real Kitchens',
-      'Voice input and simple UI make it practical while cooking — not just for browsing.',
     ),
     (
       '📓',
@@ -685,7 +673,9 @@ class _ComparisonTable extends StatelessWidget {
               .map(
                 (h) => Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 8, vertical: 10),
+                    horizontal: 8,
+                    vertical: 10,
+                  ),
                   child: Text(
                     h,
                     style: const TextStyle(
@@ -704,9 +694,7 @@ class _ComparisonTable extends StatelessWidget {
           final isEven = entry.key.isEven;
           return TableRow(
             decoration: BoxDecoration(
-              color: isEven
-                  ? const Color(0xFFF4F3FB)
-                  : Colors.white,
+              color: isEven ? const Color(0xFFF4F3FB) : Colors.white,
             ),
             children: entry.value
                 .asMap()
@@ -714,7 +702,9 @@ class _ComparisonTable extends StatelessWidget {
                 .map(
                   (cell) => Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 8, vertical: 9),
+                      horizontal: 8,
+                      vertical: 9,
+                    ),
                     child: Text(
                       cell.value,
                       style: TextStyle(
@@ -779,8 +769,7 @@ class _VisionCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.15),
               borderRadius: BorderRadius.circular(12),
@@ -840,13 +829,13 @@ class _DeveloperCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          
+
           Container(
             width: 64,
             height: 64,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              gradient: const LinearGradient(
+              gradient: LinearGradient(
                 colors: [Color(0xFF3D3A8C), Color(0xFF6B68CC)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -887,8 +876,7 @@ class _DeveloperCard extends StatelessWidget {
           GestureDetector(
             onTap: onTap,
             child: Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
                 color: const Color(0xFF0A66C2),
                 borderRadius: BorderRadius.circular(24),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recepieapp/core/theme/app_colors.dart';
+import 'package:go_router/go_router.dart';
 
 class ForgotPasswordDialog extends StatefulWidget {
   final String prefillEmail;
@@ -69,7 +70,7 @@ class _ForgotPasswordDialogState extends State<ForgotPasswordDialog> {
       ),
       actions: [
         TextButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => context.pop(),
           child: Text(
             'Cancel',
             style: tt.labelLarge?.copyWith(color: AppColors.blueShade3),
@@ -79,7 +80,7 @@ class _ForgotPasswordDialogState extends State<ForgotPasswordDialog> {
           onPressed: () {
             final email = _emailCtrl.text.trim();
             if (email.isNotEmpty) {
-              Navigator.pop(context);
+              context.pop();
               widget.onSubmit(email);
             }
           },
