@@ -33,15 +33,18 @@ class AddRecipeBloc extends Bloc<AddRecipeEvent, AddRecipeState> {
         ingredients: event.ingredients,
         sourceLink: event.sourceLink,
         servings: event.servings,
+        cookingTime: event.cookingTime,
         steps: List.generate(
           event.steps.length,
           (i) => StepModel(
             stepNumber: i + 1,
             heading: event.steps[i].heading,
             description: event.steps[i].description,
+            hasTimer: event.steps[i].hasTimer,
+            timerMinutes: event.steps[i].timerMinutes,
           ),
         ),
-        createdAt: DateTime.now(),
+        createdAt: DateTime.now(), 
       );
 
       // Step 3: Save to Firestore

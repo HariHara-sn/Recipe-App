@@ -3,28 +3,45 @@ import 'package:recepieapp/feature/recipe_details/presentation/widgets/meta_chip
 
 class HeroHeader extends StatelessWidget {
   final String tag, title, time, serves, level;
+  final String? imageUrl;
   final TextTheme tt;
 
-  const HeroHeader({super.key, 
+  const HeroHeader({
+    super.key,
     required this.tag,
     required this.title,
     required this.time,
     required this.serves,
     required this.level,
+    this.imageUrl,
     required this.tt,
   });
 
   @override
   Widget build(BuildContext context) {
+    final bool hasImage = imageUrl != null && imageUrl!.isNotEmpty;
+
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFF4ECDC4), Color(0xFF2A7B9B)],
-        ),
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        gradient: hasImage
+            ? null
+            : const LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFF4ECDC4), Color(0xFF2A7B9B)],
+              ),
+        image: hasImage
+            ? DecorationImage(
+                image: NetworkImage(imageUrl!),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.3),
+                  BlendMode.darken,
+                ),
+              )
+            : null,
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(32),
           bottomRight: Radius.circular(32),
         ),
@@ -36,23 +53,26 @@ class HeroHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Dish illustration placeholder
-              Center(
-                child: Container(
-                  width: 110,
-                  height: 110,
-                  margin: const EdgeInsets.only(bottom: 20),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
+              // Dish illustration placeholder (only if no image)
+              if (!hasImage)
+                Center(
+                  child: Container(
+                    width: 110,
+                    height: 110,
+                    margin: const EdgeInsets.only(bottom: 20),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.restaurant_menu_rounded,
+                      color: Color(0xFF4ECDC4),
+                      size: 54,
+                    ),
                   ),
-                  child: const Icon(
-                    Icons.restaurant_menu_rounded,
-                    color: Color(0xFF4ECDC4),
-                    size: 54,
-                  ),
-                ),
-              ),
+                )
+              else
+                const SizedBox(height: 130), // Spacing instead of illustration
 
               // Tag pill
               Container(

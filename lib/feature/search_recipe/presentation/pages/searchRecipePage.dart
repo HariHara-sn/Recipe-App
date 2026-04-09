@@ -893,5 +893,4 @@ class _IngPill extends StatelessWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 // HELPER
 // ─────────────────────────────────────────────────────────────────────────────
-String _capitalise(String s) =>
-    s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
+String _capitalise(String s) => s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);

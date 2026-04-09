@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/field_label.dart';
-import '../../../../core/theme/app_colors.dart';
+import 'cooking_time_label.dart';
 
 class IngredientTitleRow extends StatelessWidget {
   final TextTheme tt;
-  const IngredientTitleRow({super.key, required this.tt});
+  final String cookingTime;
+  final VoidCallback onTimeTap;
+
+  const IngredientTitleRow({
+    super.key,
+    required this.tt,
+    required this.cookingTime,
+    required this.onTimeTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,15 +20,12 @@ class IngredientTitleRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         fieldLabel('INGREDIENTS', tt),
-        Container(
-          padding: const EdgeInsets.all(6),
-          decoration: BoxDecoration(
-            color: AppColors.blueShadeText,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: const Icon(Icons.mic_rounded, color: Colors.white, size: 16),
+        CookingTimeLabel(
+          time: cookingTime,
+          onPress: onTimeTap,
         ),
       ],
     );
   }
 }
+

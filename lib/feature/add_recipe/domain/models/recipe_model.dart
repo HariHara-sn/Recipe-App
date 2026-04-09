@@ -9,6 +9,7 @@ class RecipeModel {
   final List<IngredientModel> ingredients;
   final String sourceLink;
   final int servings;
+  final String cookingTime;
   final List<StepModel> steps;
   final DateTime? createdAt;
 
@@ -20,6 +21,7 @@ class RecipeModel {
     required this.ingredients,
     required this.sourceLink,
     required this.servings,
+    required this.cookingTime,
     required this.steps,
     this.createdAt,
   });
@@ -31,6 +33,7 @@ class RecipeModel {
     'ingredients': ingredients.map((e) => e.toMap()).toList(),
     'sourceLink': sourceLink,
     'servings': servings,
+    'cookingTime': cookingTime,
     'steps': steps.map((e) => e.toMap()).toList(),
     'createdAt':
         createdAt?.toIso8601String() ?? DateTime.now().toIso8601String(),
@@ -47,6 +50,7 @@ class RecipeModel {
             .toList(),
         sourceLink: map['sourceLink'] as String,
         servings: map['servings'] as int,
+        cookingTime: map['cookingTime'] as String? ?? '45 mins',
         steps: (map['steps'] as List)
             .map((e) => StepModel.fromMap(e as Map<String, dynamic>))
             .toList(),

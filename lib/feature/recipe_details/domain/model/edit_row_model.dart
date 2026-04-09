@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 
 class IngEditRow {
   TextEditingController nameCtrl;
-  TextEditingController subtitleCtrl;
   TextEditingController qtyCtrl;
   String unit;
 
   IngEditRow({
     required this.nameCtrl,
-    required this.subtitleCtrl,
     required this.qtyCtrl,
     required this.unit,
   });

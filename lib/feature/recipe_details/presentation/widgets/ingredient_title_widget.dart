@@ -58,13 +58,6 @@ class IngredientTile extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                if (ingredient.subtitle.isNotEmpty)
-                  Text(
-                    ingredient.subtitle,
-                    style: tt.bodySmall?.copyWith(
-                      color: const Color(0xFF9090AA),
-                    ),
-                  ),
               ],
             ),
           ),

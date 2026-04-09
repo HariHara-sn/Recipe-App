@@ -9,6 +9,7 @@ final class AddRecipeSubmitted extends AddRecipeEvent {
   final List<IngredientModel> ingredients;
   final String sourceLink;
   final int servings;
+  final String cookingTime;
   final List<StepModel> steps;
   final String userId;
 
@@ -18,6 +19,7 @@ final class AddRecipeSubmitted extends AddRecipeEvent {
     required this.ingredients,
     required this.sourceLink,
     required this.servings,
+    required this.cookingTime,
     required this.steps,
     required this.userId,
   });

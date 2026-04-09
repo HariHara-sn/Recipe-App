@@ -23,6 +23,7 @@ import '../../../../feature/home/presentation/widgets/app_bar.dart';
 import '../../../../utils/shared/custom_snack_bar.dart';
 import '../../domain/models/ingredient_model.dart';
 import '../../domain/models/step_model.dart';
+import '../widgets/cooking_time_picker_sheet.dart';
 
 class AddRecipePage extends StatefulWidget {
   const AddRecipePage({super.key});
@@ -34,6 +35,7 @@ class AddRecipePage extends StatefulWidget {
 class _AddRecipePageState extends State<AddRecipePage> {
   File? _dishImage;
   final _titleController = TextEditingController();
+  final _cookingTimeController = TextEditingController();
   final List<IngredientRow> _ingredients = [IngredientRow()];
   final _sourceLinkController = TextEditingController();
   int _servings = 1;
@@ -45,20 +47,95 @@ class _AddRecipePageState extends State<AddRecipePage> {
     if (picked != null) setState(() => _dishImage = File(picked.path));
   }
 
+  void _showTimePicker() {
+    int currentMinutes = 45;
+    final text = _cookingTimeController.text;
+    if (text.contains('hours')) {
+      final parts = text.split(' ');
+      final h = int.tryParse(parts[0]) ?? 0;
+      int m = 0;
+      if (parts.length > 2) {
+        m = int.tryParse(parts[2]) ?? 0;
+      }
+      currentMinutes = (h * 60) + m;
+    } else if (text.contains('mins')) {
+      currentMinutes = int.tryParse(text.replaceAll(' mins', '')) ?? 45;
+    }
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) => CookingTimePicker(
+        initialTotalMinutes: currentMinutes,
+        onTimeSelected: (totalMinutes) {
+          setState(() {
+            if (totalMinutes >= 60) {
+              final h = totalMinutes ~/ 60;
+              final m = totalMinutes % 60;
+              _cookingTimeController.text = (m == 0)
+                  ? '$h hours'
+                  : '$h hours $m mins';
+            } else {
+              _cookingTimeController.text = '$totalMinutes mins';
+            }
+          });
+        },
+      ),
+    );
+  }
+
+  // Widget cookingTimeLable(int defaultValue) {
+  //   return GestureDetector(
+  //     onLongPress: _showTimePicker,
+  //     child: Container(
+  //       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+  //       decoration: BoxDecoration(
+  //         color: const Color(0xFF3D3A8C).withOpacity(0.1),
+  //         borderRadius: BorderRadius.circular(6),
+  //       ),
+  //       child: Row(
+  //         mainAxisSize: MainAxisSize.min,
+  //         children: [
+  //           const Icon(Icons.timer_outlined, color: Color(0xFF3D3A8C), size: 14),
+  //           const SizedBox(width: 4),
+  //           Text(
+  //             _cookingTimeController.text.isEmpty
+  //                 ? '$defaultValue mins'
+  //                 : _cookingTimeController.text,
+  //             style: const TextStyle(
+  //               color: Color(0xFF3D3A8C),
+  //               fontSize: 12,
+  //               fontWeight: FontWeight.w500,
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
   void _onSubmit() {
     if (_dishImage == null) {
-      CustomSnackBar.showSnackBar('Please pick a dish image.', SnackBarType.failure);
+      CustomSnackBar.showSnackBar(
+        'Please pick a dish image.',
+        SnackBarType.failure,
+      );
       return;
     }
     if (_titleController.text.trim().isEmpty) {
-      CustomSnackBar.showSnackBar('Please enter a recipe title.', SnackBarType.failure);
+      CustomSnackBar.showSnackBar(
+        'Please enter a recipe title.',
+        SnackBarType.failure,
+      );
       return;
     }
 
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
-      CustomSnackBar.showSnackBar('You must be signed in to save a recipe.', SnackBarType.failure);
+      CustomSnackBar.showSnackBar(
+        'You must be signed in to save a recipe.',
+        SnackBarType.failure,
+      );
       return;
     }
 
@@ -78,6 +155,9 @@ class _AddRecipePageState extends State<AddRecipePage> {
             .toList(),
         sourceLink: _sourceLinkController.text.trim(),
         servings: _servings,
+        cookingTime: _cookingTimeController.text.trim().isEmpty
+            ? '45 mins'
+            : _cookingTimeController.text.trim(),
         steps: _steps
             .where((e) => e.headingCtrl.text.trim().isNotEmpty)
             .toList()
@@ -99,6 +179,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
   @override
   void dispose() {
     _titleController.dispose();
+    _cookingTimeController.dispose();
     _sourceLinkController.dispose();
     for (final ing in _ingredients) {
       ing.nameCtrl.dispose();
@@ -119,12 +200,16 @@ class _AddRecipePageState extends State<AddRecipePage> {
       listener: (context, state) {
         if (state is AddRecipeSuccess) {
           logger.i('Recipe saved successfully');
-          CustomSnackBar.showSnackBar('Recipe saved successfully!', SnackBarType.success);
+          CustomSnackBar.showSnackBar(
+            'Recipe saved successfully!',
+            SnackBarType.success,
+          );
           context.read<AddRecipeBloc>().add(AddRecipeReset());
 
           setState(() {
             _dishImage = null;
             _titleController.clear();
+            _cookingTimeController.clear();
             _sourceLinkController.clear();
             _servings = 1;
 
@@ -215,7 +300,13 @@ class _AddRecipePageState extends State<AddRecipePage> {
                             ),
                             const SizedBox(height: 24),
 
-                            IngredientTitleRow(tt: tt),
+                            IngredientTitleRow(
+                              tt: tt,
+                              cookingTime: _cookingTimeController.text.isEmpty
+                                  ? '10 mins'
+                                  : _cookingTimeController.text,
+                              onTimeTap: _showTimePicker,
+                            ),
                             const SizedBox(height: 10),
                             Row(
                               children: [
@@ -308,7 +399,8 @@ class _AddRecipePageState extends State<AddRecipePage> {
                             }),
 
                             FullWidthIconButton(
-                              onPressed: () => setState(() => _steps.add(StepRow())),
+                              onPressed: () =>
+                                  setState(() => _steps.add(StepRow())),
                               icon: Icons.add_circle_outline,
                               label: "Add Step",
                               textStyle: tt.labelLarge?.copyWith(

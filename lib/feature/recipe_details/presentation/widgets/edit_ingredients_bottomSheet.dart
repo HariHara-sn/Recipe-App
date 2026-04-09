@@ -28,7 +28,6 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
         .map(
           (e) => IngEditRow(
             nameCtrl: TextEditingController(text: e.name),
-            subtitleCtrl: TextEditingController(text: e.subtitle),
             qtyCtrl: TextEditingController(text: e.qty),
             unit: e.unit,
           ),
@@ -40,7 +39,6 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
   void dispose() {
     for (final r in _rows) {
       r.nameCtrl.dispose();
-      r.subtitleCtrl.dispose();
       r.qtyCtrl.dispose();
     }
     super.dispose();
@@ -52,7 +50,6 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
         .map(
           (r) => IngredientItem(
             name: r.nameCtrl.text.trim(),
-            subtitle: r.subtitleCtrl.text.trim(),
             qty: r.qtyCtrl.text.trim().isEmpty ? '0' : r.qtyCtrl.text.trim(),
             unit: r.unit,
           ),
@@ -128,7 +125,6 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
                           () => _rows.add(
                             IngEditRow(
                               nameCtrl: TextEditingController(),
-                              subtitleCtrl: TextEditingController(),
                               qtyCtrl: TextEditingController(),
                               unit: 'g',
                             ),
@@ -184,7 +180,6 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
                           ],
                         ),
                         const SizedBox(height: 8),
-                        sheetField(row.subtitleCtrl, 'Note (optional)', tt),
                         const SizedBox(height: 8),
                         Row(
                           children: [
