@@ -70,3 +70,9 @@ windows/flutter/ephemeral/
 # Generated files
 # -----------------------------
 pubspec.lock
+
+# -----------------------------
+# Secrets / Environment
+# -----------------------------
+.env
+*.env

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import 'package:recepieapp/feature/home/presentation/widgets/helper_widget.dart';
+import 'package:recepieapp/utils/shared/app_network_image.dart';
 
 import '../../../../core/router/app_routes.dart';
 import '../../../../core/theme/app_images.dart';
@@ -24,11 +23,11 @@ class HeroRecipeCard extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              Image.network(
-                NetImg.tangyRasam,
+              AppNetworkImage(
+                url: NetImg.tangyRasam,
+                width: double.infinity,
+                height: 280,
                 fit: BoxFit.cover,
-                loadingBuilder: (_, child, progress) =>
-                    progress == null ? child : shimmerBox(double.infinity, 280),
               ),
               // Gradient overlay
               Container(

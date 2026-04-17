@@ -22,10 +22,13 @@ class AddRecipeBloc extends Bloc<AddRecipeEvent, AddRecipeState> {
     emit(AddRecipeLoading());
 
     try {
-      // Step 1: Upload image → get hosted URL
-      final imageUrl = await _repository.uploadImage(event.localImagePath);
+      String imageUrl;
+      if (event.localImagePath != null && event.localImagePath!.trim().isNotEmpty) {
+        imageUrl = await _repository.uploadImage(event.localImagePath!);
+      } else {
+        imageUrl = 'https://plus.unsplash.com/premium_photo-1663852297267-827c73e7529e?q=80&w=2670&auto=format&fit=crop';
+      }
 
-      // Step 2: Build the recipe model with the hosted URL
       final recipe = RecipeModel(
         userId: event.userId,
         imageUrl: imageUrl,
@@ -47,7 +50,6 @@ class AddRecipeBloc extends Bloc<AddRecipeEvent, AddRecipeState> {
         createdAt: DateTime.now(), 
       );
 
-      // Step 3: Save to Firestore
       await _repository.saveRecipe(recipe);
 
       emit(AddRecipeSuccess());

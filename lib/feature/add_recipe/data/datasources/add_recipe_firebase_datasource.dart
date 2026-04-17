@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'dart:io';
+import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,23 +24,33 @@ class AddRecipeFirebaseDatasource {
        _storage = storage ?? FirebaseStorage.instance,
        _auth = auth ?? FirebaseAuth.instance;
 
-  /// Uploads the image to Firebase Storage and returns the download URL.
-  /// Images are stored at: users/{userId}/recipes/{timestamp}.jpg
+  /// Uploads the image to Cloudinary and returns the download URL.
   Future<String> uploadImage(String localImagePath) async {
     final user = _auth.currentUser;
     if (user == null) throw AddRecipeFailure.userNotAuthenticated();
 
     try {
-      final file = File(localImagePath);
-      final fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
-      final ref = _storage.ref('users/${user.uid}/recipes/$fileName');
+      final cloudName = dotenv.env['VITE_CLOUDINARY_CLOUD_NAME'];
+      final uploadPreset = dotenv.env['VITE_CLOUDINARY_UPLOAD_PRESET'];
+      
+      if (cloudName == null || uploadPreset == null) {
+        throw Exception("Cloudinary credentials not initialized properly");
+      }
 
-      final uploadTask = await ref.putFile(
-        file,
-        SettableMetadata(contentType: 'image/jpeg'),
-      );
+      final uri = Uri.parse('https://api.cloudinary.com/v1_1/$cloudName/image/upload');
+      final request = http.MultipartRequest('POST', uri)
+        ..fields['upload_preset'] = uploadPreset
+        ..files.add(await http.MultipartFile.fromPath('file', localImagePath));
 
-      return await uploadTask.ref.getDownloadURL();
+      final response = await request.send();
+      if (response.statusCode == 200) {
+        final responseData = await response.stream.toBytes();
+        final responseString = String.fromCharCodes(responseData);
+        final jsonMap = jsonDecode(responseString);
+        return jsonMap['secure_url'] as String;
+      } else {
+        throw Exception("Failed to upload image to Cloudinary: ${response.statusCode}");
+      }
     } catch (e) {
       return NetImg.tangyRasam;
     }

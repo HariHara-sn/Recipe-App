@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/feature/home/presentation/widgets/helper_widget.dart';
+import 'package:recepieapp/utils/shared/app_network_image.dart';
 
 import '../../../../core/theme/app_images.dart';
 
@@ -65,16 +65,12 @@ class _ListRecipeCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          ClipRRect(
+          AppNetworkImage(
+            url: imageUrl,
+            width: 72,
+            height: 72,
+            fit: BoxFit.cover,
             borderRadius: BorderRadius.circular(12),
-            child: Image.network(
-              imageUrl,
-              width: 72,
-              height: 72,
-              fit: BoxFit.cover,
-              loadingBuilder: (_, child, progress) =>
-                  progress == null ? child : shimmerBox(72, 72),
-            ),
           ),
           const SizedBox(width: 14),
           Expanded(

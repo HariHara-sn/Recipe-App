@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recepieapp/feature/home/presentation/widgets/helper_widget.dart';
+import 'package:recepieapp/utils/shared/app_network_image.dart';
 
 import '../../../../core/theme/app_images.dart';
 
@@ -58,24 +58,12 @@ class _RecentCard extends StatelessWidget {
         crossAxisAlignment: .start,
         mainAxisAlignment: .start,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Image.network(
-                imageUrl,
-                fit: BoxFit.cover,
-
-                loadingBuilder:
-                    (
-                      _,
-                      child,
-                      progress,
-                    ) => // Hari remove this when you add the local image. bcoze local image dont need the progress [ :) Update: but we gona save the image in firebase]
-                    progress == null
-                    ? child
-                    : shimmerBox(double.infinity, 150),
-              ),
+          AspectRatio(
+            aspectRatio: 1,
+            child: AppNetworkImage(
+              url: imageUrl,
+              fit: BoxFit.cover,
+              borderRadius: BorderRadius.circular(16),
             ),
           ),
           const SizedBox(height: 8),

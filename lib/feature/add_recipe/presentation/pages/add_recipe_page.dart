@@ -84,44 +84,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
     );
   }
 
-  // Widget cookingTimeLable(int defaultValue) {
-  //   return GestureDetector(
-  //     onLongPress: _showTimePicker,
-  //     child: Container(
-  //       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-  //       decoration: BoxDecoration(
-  //         color: const Color(0xFF3D3A8C).withOpacity(0.1),
-  //         borderRadius: BorderRadius.circular(6),
-  //       ),
-  //       child: Row(
-  //         mainAxisSize: MainAxisSize.min,
-  //         children: [
-  //           const Icon(Icons.timer_outlined, color: Color(0xFF3D3A8C), size: 14),
-  //           const SizedBox(width: 4),
-  //           Text(
-  //             _cookingTimeController.text.isEmpty
-  //                 ? '$defaultValue mins'
-  //                 : _cookingTimeController.text,
-  //             style: const TextStyle(
-  //               color: Color(0xFF3D3A8C),
-  //               fontSize: 12,
-  //               fontWeight: FontWeight.w500,
-  //             ),
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
-
   void _onSubmit() {
-    if (_dishImage == null) {
-      CustomSnackBar.showSnackBar(
-        'Please pick a dish image.',
-        SnackBarType.failure,
-      );
-      return;
-    }
     if (_titleController.text.trim().isEmpty) {
       CustomSnackBar.showSnackBar(
         'Please enter a recipe title.',
@@ -141,7 +104,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
 
     context.read<AddRecipeBloc>().add(
       AddRecipeSubmitted(
-        localImagePath: _dishImage!.path,
+        localImagePath: _dishImage?.path,
         title: _titleController.text.trim(),
         ingredients: _ingredients
             .where((e) => e.nameCtrl.text.trim().isNotEmpty)

@@ -14,7 +14,6 @@ import 'package:recepieapp/feature/recipe_details/presentation/widgets/hero_head
 import 'package:recepieapp/feature/recipe_details/presentation/widgets/ingredient_title_widget.dart';
 import 'package:recepieapp/feature/recipe_details/presentation/widgets/note_card.dart';
 import 'package:recepieapp/feature/recipe_details/presentation/widgets/start_cooking_button.dart';
-import 'package:go_router/go_router.dart';
 import 'package:recepieapp/feature/add_recipe/presentation/widgets/user_avatar.dart';
 
 class RecipeDetailPage extends StatefulWidget {

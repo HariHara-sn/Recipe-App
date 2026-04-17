@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:recepieapp/feature/add_recipe/domain/models/recipe_model.dart';
 import 'package:recepieapp/core/theme/app_colors.dart';
 import 'package:recepieapp/feature/recipe_details/presentation/pages/recipe_detail_page.dart';
+import 'package:recepieapp/utils/shared/app_network_image.dart';
 
 class RecipeSearchByNamePage extends StatefulWidget {
   const RecipeSearchByNamePage({super.key});
@@ -170,22 +171,12 @@ class _RecipeSearchByNamePageState extends State<RecipeSearchByNamePage> {
                                 );
                               },
                               contentPadding: const EdgeInsets.all(12),
-                              leading: ClipRRect(
+                              leading: AppNetworkImage(
+                                url: recipe.imageUrl,
+                                width: 60,
+                                height: 60,
+                                fit: BoxFit.cover,
                                 borderRadius: BorderRadius.circular(10),
-                                child: Image.network(
-                                  recipe.imageUrl,
-                                  width: 60,
-                                  height: 60,
-                                  fit: BoxFit.cover,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return Container(
-                                      width: 60,
-                                      height: 60,
-                                      color: const Color(0xFFEEEDFA),
-                                      child: const Icon(Icons.fastfood, color: Color(0xFF3D3A8C)),
-                                    );
-                                  },
-                                ),
                               ),
                               title: Text(
                                 recipe.title,

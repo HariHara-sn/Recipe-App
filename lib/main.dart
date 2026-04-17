@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:recepieapp/core/theme/app_theme.dart';
@@ -19,6 +20,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
   await Firebase.initializeApp();
+  await dotenv.load(fileName: ".env");
 
   await Hive.initFlutter();
   await Hive.openBox(HiveBoxes.auth);

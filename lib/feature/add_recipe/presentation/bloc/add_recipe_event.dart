@@ -4,7 +4,7 @@ abstract class AddRecipeEvent {}
 
 /// Fired when the user taps Submit on the add recipe form
 final class AddRecipeSubmitted extends AddRecipeEvent {
-  final String localImagePath;   // path from image_picker
+  final String? localImagePath;   // path from image_picker
   final String title;
   final List<IngredientModel> ingredients;
   final String sourceLink;
@@ -14,7 +14,7 @@ final class AddRecipeSubmitted extends AddRecipeEvent {
   final String userId;
 
   AddRecipeSubmitted({
-    required this.localImagePath,
+    this.localImagePath,
     required this.title,
     required this.ingredients,
     required this.sourceLink,

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:recepieapp/feature/add_recipe/add_recipe_provider.dart';
 import 'package:recepieapp/feature/home/presentation/pages/home_page.dart';
-import 'package:recepieapp/feature/search_recipe/presentation/pages/searchRecipePage.dart';
+import 'package:recepieapp/feature/search_recipe/presentation/pages/pantry_search_page.dart';
 
 import '../../feature/profile/profile_provider.dart';
 
@@ -58,6 +58,7 @@ class _FloatingNavBarState extends State<FloatingNavBar> {
       child: Scaffold(
         extendBody: true,
         backgroundColor: Colors.transparent,
+        resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
             _pages[_selectedIndex],

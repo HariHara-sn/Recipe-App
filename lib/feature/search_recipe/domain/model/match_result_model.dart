@@ -1,7 +1,7 @@
-import 'package:recepieapp/feature/search_recipe/domain/model/recipe_data_model.dart';
+import 'package:recepieapp/feature/add_recipe/domain/models/recipe_model.dart';
 
 class MatchResult {
-  final RecipeData recipe;
+  final RecipeModel recipe;
   final int matchPercent;
   final List<String> matchedIngredients;
   final List<String> missingIngredients;
