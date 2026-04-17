@@ -1,78 +1,51 @@
-# -----------------------------
 # OS / Misc
-# -----------------------------
 *.log
 *.tmp
 *.swp
 .DS_Store
 Thumbs.db
 
-# -----------------------------
 # IDE
-# -----------------------------
 .idea/
 *.iml
-
-# VS Code (optional: keep settings if team uses same setup)
 .vscode/
 
-# -----------------------------
-# Dart / Flutter
-# -----------------------------
+# Flutter / Dart
 .dart_tool/
 .packages
 .pub/
 .pub-cache/
 build/
 coverage/
-
-# Flutter plugin files
 .flutter-plugins
 .flutter-plugins-dependencies
-
-# Metadata (safe to ignore)
 .metadata
 
-# -----------------------------
 # Android
-# -----------------------------
 android/.gradle/
 android/app/build/
 
-# -----------------------------
 # iOS / macOS
-# -----------------------------
 ios/Pods/
 ios/.symlinks/
 ios/Flutter/Flutter.framework
 ios/Flutter/Flutter.podspec
-
 macos/Pods/
 macos/Flutter/ephemeral/
 
-# -----------------------------
 # Linux / Windows
-# -----------------------------
 linux/flutter/ephemeral/
 windows/flutter/ephemeral/
 
-# -----------------------------
-# FVM (IMPORTANT)
-# -----------------------------
+# FVM
 .fvm/flutter_sdk/
 .fvm/versions/
-
-# KEEP THIS (do NOT ignore)
 !.fvm/fvm_config.json
 !.fvmrc
 
-# -----------------------------
 # Generated files
-# -----------------------------
 pubspec.lock
 
-# -----------------------------
-# Secrets / Environment
-# -----------------------------
+# Secrets
 .env
 *.env
