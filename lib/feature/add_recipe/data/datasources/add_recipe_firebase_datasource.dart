@@ -1,11 +1,9 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../../../core/theme/app_images.dart';
 import '../../domain/models/recipe_model.dart';
@@ -13,15 +11,12 @@ import '../failure.dart';
 
 class AddRecipeFirebaseDatasource {
   final FirebaseFirestore _firestore;
-  final FirebaseStorage _storage;
   final FirebaseAuth _auth;
 
   AddRecipeFirebaseDatasource({
     FirebaseFirestore? firestore,
-    FirebaseStorage? storage,
     FirebaseAuth? auth,
   }) : _firestore = firestore ?? FirebaseFirestore.instance,
-       _storage = storage ?? FirebaseStorage.instance,
        _auth = auth ?? FirebaseAuth.instance;
 
   /// Uploads the image to Cloudinary and returns the download URL.

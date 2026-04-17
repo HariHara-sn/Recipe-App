@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 import 'package:recepieapp/utils/shared/app_network_image.dart';
 
 import '../../../../core/theme/app_images.dart';
@@ -57,7 +58,7 @@ class _ListRecipeCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF3D3A8C).withOpacity(0.05),
+            color: AppColors.primaryBlue.withOpacity(0.05),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -80,7 +81,7 @@ class _ListRecipeCard extends StatelessWidget {
                 Text(
                   tag,
                   style: tt.bodySmall?.copyWith(
-                    color: const Color(0xFF3D3A8C),
+                    color: AppColors.primaryBlue,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.2,
                   ),
@@ -89,14 +90,14 @@ class _ListRecipeCard extends StatelessWidget {
                 Text(
                   title,
                   style: tt.titleMedium?.copyWith(
-                    color: const Color(0xFF1A1A2E),
+                    color: AppColors.textMain,
                     height: 1.3,
                   ),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   subtitle,
-                  style: tt.bodySmall?.copyWith(color: const Color(0xFF9090AA)),
+                  style: tt.bodySmall?.copyWith(color: AppColors.textGrey),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 import 'package:recepieapp/feature/recipe_details/domain/model/edit_row_model.dart';
 import 'package:recepieapp/feature/recipe_details/domain/model/ingredient_model.dart';
 import 'package:recepieapp/feature/recipe_details/presentation/widgets/sheet_textfield_widget.dart';
@@ -69,7 +70,7 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
       maxChildSize: 0.95,
       builder: (_, scrollCtrl) => Container(
         decoration: const BoxDecoration(
-          color: Color(0xFFF4F3FB),
+          color: AppColors.blueShade5,
           borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
         ),
         child: Column(
@@ -80,7 +81,7 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
               width: 40,
               height: 4,
               decoration: BoxDecoration(
-                color: const Color(0xFFCCCCDD),
+                color: AppColors.greyIcon,
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
@@ -93,7 +94,7 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
                   Text(
                     'Edit Ingredients',
                     style: tt.headlineMedium?.copyWith(
-                      color: const Color(0xFF1A1A2E),
+                      color: AppColors.textMain,
                     ),
                   ),
                   TextButton(
@@ -101,7 +102,7 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
                     child: Text(
                       'Save',
                       style: tt.labelLarge?.copyWith(
-                        color: const Color(0xFF3D3A8C),
+                        color: AppColors.primaryBlue,
                       ),
                     ),
                   ),
@@ -133,8 +134,8 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
                         icon: const Icon(Icons.add, size: 16),
                         label: const Text('Add Ingredient'),
                         style: OutlinedButton.styleFrom(
-                          foregroundColor: const Color(0xFF3D3A8C),
-                          side: const BorderSide(color: Color(0xFF3D3A8C)),
+                          foregroundColor: AppColors.primaryBlue,
+                          side: const BorderSide(color: AppColors.primaryBlue),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
@@ -152,7 +153,7 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF3D3A8C).withOpacity(0.04),
+                          color: AppColors.primaryBlue.withOpacity(0.04),
                           blurRadius: 8,
                         ),
                       ],
@@ -206,10 +207,10 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
                                     horizontal: 12,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFF4F3FB),
+                                    color: AppColors.blueShade5,
                                     borderRadius: BorderRadius.circular(10),
                                     border: Border.all(
-                                      color: const Color(0xFFE0DEF7),
+                                      color: AppColors.blueShade4,
                                     ),
                                   ),
                                   child: DropdownButtonHideUnderline(
@@ -217,12 +218,12 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
                                       value: row.unit,
                                       isExpanded: true,
                                       style: tt.bodySmall?.copyWith(
-                                        color: const Color(0xFF1A1A2E),
+                                        color: AppColors.textMain,
                                       ),
                                       icon: const Icon(
                                         Icons.expand_more_rounded,
                                         size: 16,
-                                        color: Color(0xFF9090AA),
+                                        color: AppColors.textGrey,
                                       ),
                                       items: _units
                                           .map(
@@ -254,4 +255,4 @@ class _EditIngredientsSheetState extends State<EditIngredientsSheet> {
       ),
     );
   }
-}
+}

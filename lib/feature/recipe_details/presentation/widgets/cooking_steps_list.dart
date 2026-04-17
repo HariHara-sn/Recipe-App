@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 import 'package:recepieapp/feature/recipe_details/domain/model/cooking_steps_model.dart';
 
 class CookingStepsList extends StatelessWidget {
@@ -24,7 +25,7 @@ class CookingStepsList extends StatelessWidget {
                     width: 32,
                     height: 32,
                     decoration: const BoxDecoration(
-                      color: Color(0xFF3D3A8C),
+                      color: AppColors.primaryBlue,
                       shape: BoxShape.circle,
                     ),
                     child: Center(
@@ -41,7 +42,7 @@ class CookingStepsList extends StatelessWidget {
                     Expanded(
                       child: Container(
                         width: 2,
-                        color: const Color(0xFFDDDCF0),
+                        color: AppColors.borderLavender,
                         margin: const EdgeInsets.symmetric(vertical: 4),
                       ),
                     ),
@@ -59,14 +60,14 @@ class CookingStepsList extends StatelessWidget {
                       Text(
                         step.heading,
                         style: tt.titleMedium?.copyWith(
-                          color: const Color(0xFF1A1A2E),
+                          color: AppColors.textMain,
                         ),
                       ),
                       const SizedBox(height: 6),
                       Text(
                         step.description,
                         style: tt.bodyMedium?.copyWith(
-                          color: const Color(0xFF6B6B8A),
+                          color: AppColors.textSecondary,
                           height: 1.6,
                         ),
                       ),
@@ -78,7 +79,7 @@ class CookingStepsList extends StatelessWidget {
                             vertical: 6,
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFEEEDFA),
+                            color: AppColors.softLavender,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Row(
@@ -86,14 +87,14 @@ class CookingStepsList extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.timer_outlined,
-                                color: Color(0xFF3D3A8C),
+                                color: AppColors.primaryBlue,
                                 size: 14,
                               ),
                               const SizedBox(width: 5),
                               Text(
                                 'SET TIMER ${step.timerMinutes} MIN',
                                 style: tt.bodySmall?.copyWith(
-                                  color: const Color(0xFF3D3A8C),
+                                  color: AppColors.primaryBlue,
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: 0.8,
                                 ),

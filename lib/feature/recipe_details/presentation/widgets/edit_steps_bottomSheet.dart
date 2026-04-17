@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 import 'package:recepieapp/feature/recipe_details/domain/model/cooking_steps_model.dart';
 import 'package:recepieapp/feature/recipe_details/domain/model/edit_row_model.dart';
 import 'package:recepieapp/feature/recipe_details/presentation/widgets/sheet_textfield_widget.dart';
@@ -70,7 +71,7 @@ class _EditStepsSheetState extends State<EditStepsSheet> {
       maxChildSize: 0.97,
       builder: (_, scrollCtrl) => Container(
         decoration: const BoxDecoration(
-          color: Color(0xFFF4F3FB),
+          color: AppColors.blueShade5,
           borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
         ),
         child: Column(
@@ -80,7 +81,7 @@ class _EditStepsSheetState extends State<EditStepsSheet> {
               width: 40,
               height: 4,
               decoration: BoxDecoration(
-                color: const Color(0xFFCCCCDD),
+                color: AppColors.greyIcon,
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
@@ -92,7 +93,7 @@ class _EditStepsSheetState extends State<EditStepsSheet> {
                   Text(
                     'Edit Steps',
                     style: tt.headlineMedium?.copyWith(
-                      color: const Color(0xFF1A1A2E),
+                      color: AppColors.textMain,
                     ),
                   ),
                   TextButton(
@@ -100,7 +101,7 @@ class _EditStepsSheetState extends State<EditStepsSheet> {
                     child: Text(
                       'Save',
                       style: tt.labelLarge?.copyWith(
-                        color: const Color(0xFF3D3A8C),
+                        color: AppColors.primaryBlue,
                       ),
                     ),
                   ),
@@ -136,8 +137,8 @@ class _EditStepsSheetState extends State<EditStepsSheet> {
                     icon: const Icon(Icons.add, size: 16),
                     label: const Text('Add Step'),
                     style: OutlinedButton.styleFrom(
-                      foregroundColor: const Color(0xFF3D3A8C),
-                      side: const BorderSide(color: Color(0xFF3D3A8C)),
+                      foregroundColor: AppColors.primaryBlue,
+                      side: const BorderSide(color: AppColors.primaryBlue),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -156,7 +157,7 @@ class _EditStepsSheetState extends State<EditStepsSheet> {
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF3D3A8C).withOpacity(0.04),
+                          color: AppColors.primaryBlue.withOpacity(0.04),
                           blurRadius: 8,
                         ),
                       ],
@@ -171,7 +172,7 @@ class _EditStepsSheetState extends State<EditStepsSheet> {
                               width: 26,
                               height: 26,
                               decoration: const BoxDecoration(
-                                color: Color(0xFF3D3A8C),
+                                color: AppColors.primaryBlue,
                                 shape: BoxShape.circle,
                               ),
                               child: Center(
@@ -189,13 +190,13 @@ class _EditStepsSheetState extends State<EditStepsSheet> {
                               child: Text(
                                 'Step ${i + 1}',
                                 style: tt.bodyMedium?.copyWith(
-                                  color: const Color(0xFF9090AA),
+                                  color: AppColors.textGrey,
                                 ),
                               ),
                             ),
                             const Icon(
                               Icons.drag_handle_rounded,
-                              color: Color(0xFF9090AA),
+                              color: AppColors.textGrey,
                               size: 20,
                             ),
                             const SizedBox(width: 8),
@@ -236,7 +237,7 @@ class _EditStepsSheetState extends State<EditStepsSheet> {
                                     scale: 0.85,
                                     child: Switch(
                                       value: row.hasTimer,
-                                      activeColor: const Color(0xFF3D3A8C),
+                                      activeColor: AppColors.primaryBlue,
                                       onChanged: (v) {
                                         setInner(() => row.hasTimer = v);
                                         setState(() {});
@@ -247,7 +248,7 @@ class _EditStepsSheetState extends State<EditStepsSheet> {
                                   Text(
                                     'Set a timer for this step',
                                     style: tt.bodySmall?.copyWith(
-                                      color: const Color(0xFF4A4A6A),
+                                      color: AppColors.blackShadeText,
                                     ),
                                   ),
                                 ],
@@ -274,7 +275,7 @@ class _EditStepsSheetState extends State<EditStepsSheet> {
                                       Text(
                                         'minutes',
                                         style: tt.bodySmall?.copyWith(
-                                          color: const Color(0xFF6B6B8A),
+                                          color: AppColors.textSecondary,
                                         ),
                                       ),
                                     ],

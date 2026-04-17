@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 import 'package:recepieapp/utils/shared/app_network_image.dart';
 
 import '../../../../core/router/app_routes.dart';
@@ -23,7 +24,7 @@ class HeroRecipeCard extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              AppNetworkImage(
+              const AppNetworkImage(
                 url: NetImg.tangyRasam,
                 width: double.infinity,
                 height: 280,
@@ -31,12 +32,12 @@ class HeroRecipeCard extends StatelessWidget {
               ),
               // Gradient overlay
               Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [Colors.transparent, Color(0xCC1A1A2E)],
-                    stops: [0.4, 1.0],
+                    colors: [Colors.transparent, AppColors.textMain.withOpacity(0.8)],
+                    stops: const [0.4, 1.0],
                   ),
                 ),
               ),
@@ -54,7 +55,7 @@ class HeroRecipeCard extends StatelessWidget {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF3D3A8C).withOpacity(0.85),
+                        color: AppColors.primaryBlue.withOpacity(0.85),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(

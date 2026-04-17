@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 import 'package:recepieapp/feature/add_recipe/add_recipe_provider.dart';
 import 'package:recepieapp/feature/home/presentation/pages/home_page.dart';
 import 'package:recepieapp/feature/search_recipe/presentation/pages/pantry_search_page.dart';
@@ -82,7 +83,7 @@ class _FloatingNavBarState extends State<FloatingNavBar> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFF3D3A8C).withOpacity(0.15),
+                            color: AppColors.primaryBlue.withOpacity(0.15),
                             blurRadius: 30,
                             offset: const Offset(0, 10),
                           ),
@@ -107,7 +108,7 @@ class _FloatingNavBarState extends State<FloatingNavBar> {
                               ),
                               decoration: isSelected
                                   ? BoxDecoration(
-                                      color: const Color(0xFF3D3A8C),
+                                      color: AppColors.primaryBlue,
                                       borderRadius: BorderRadius.circular(20),
                                     )
                                   : null,
@@ -122,14 +123,14 @@ class _FloatingNavBarState extends State<FloatingNavBar> {
                                       children: [
                                         Icon(
                                           item.icon,
-                                          color: const Color(0xFF9090AA),
+                                          color: AppColors.textGrey,
                                           size: 22,
                                         ),
                                         const SizedBox(height: 2),
                                         Text(
                                           item.label,
                                           style: tt.bodySmall?.copyWith(
-                                            color: const Color(0xFF9090AA),
+                                            color: AppColors.textGrey,
                                             fontSize: 9,
                                             letterSpacing: 0.8,
                                           ),

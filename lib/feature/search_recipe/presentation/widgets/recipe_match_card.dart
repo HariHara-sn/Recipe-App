@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 import 'package:recepieapp/feature/search_recipe/domain/model/match_result_model.dart';
 import 'package:recepieapp/feature/search_recipe/presentation/widgets/ingredient_pill.dart';
 import 'package:recepieapp/utils/shared/app_network_image.dart';
@@ -19,9 +20,9 @@ class RecipeMatchCard extends StatelessWidget {
   });
 
   Color get _matchColor {
-    if (result.matchPercent >= 80) return const Color(0xFF2E7D32);
-    if (result.matchPercent >= 50) return const Color(0xFFE65100);
-    return const Color(0xFF9090AA);
+    if (result.matchPercent >= 80) return AppColors.matchHigh;
+    if (result.matchPercent >= 50) return AppColors.matchMedium;
+    return AppColors.textGrey;
   }
 
   @override
@@ -36,7 +37,7 @@ class RecipeMatchCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF3D3A8C).withOpacity(0.06),
+            color: AppColors.primaryBlue.withOpacity(0.06),
             blurRadius: 16,
             offset: const Offset(0, 5),
           ),
@@ -96,7 +97,7 @@ class RecipeMatchCard extends StatelessWidget {
                       child: Text(
                         recipe.title,
                         style: tt.headlineMedium?.copyWith(
-                          color: const Color(0xFF1A1A2E),
+                          color: AppColors.textMain,
                           fontSize: 18,
                           height: 1.3,
                         ),
@@ -111,7 +112,7 @@ class RecipeMatchCard extends StatelessWidget {
                             : Icons.favorite_border_rounded,
                         color: result.isFavourite
                             ? Colors.redAccent
-                            : const Color(0xFF9090AA),
+                            : AppColors.textGrey,
                         size: 22,
                       ),
                     ),
@@ -125,27 +126,27 @@ class RecipeMatchCard extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.access_time_rounded,
-                      color: Color(0xFF9090AA),
+                      color: AppColors.textGrey,
                       size: 14,
                     ),
                     const SizedBox(width: 4),
                     Text(
                       recipe.cookingTime,
                       style: tt.bodySmall?.copyWith(
-                        color: const Color(0xFF6B6B8A),
+                        color: AppColors.textSecondary,
                       ),
                     ),
                     const SizedBox(width: 14),
                     const Icon(
                       Icons.people_alt_rounded,
-                      color: Color(0xFF9090AA),
+                      color: AppColors.textGrey,
                       size: 14,
                     ),
                     const SizedBox(width: 4),
                     Text(
                       '${recipe.servings} Servings',
                       style: tt.bodySmall?.copyWith(
-                        color: const Color(0xFF6B6B8A),
+                        color: AppColors.textSecondary,
                       ),
                     ),
                   ],
@@ -157,7 +158,7 @@ class RecipeMatchCard extends StatelessWidget {
                 Text(
                   'Uses ${recipe.ingredients.length} ingredients. Tap to view & cook!',
                   style: tt.bodyMedium?.copyWith(
-                    color: const Color(0xFF6B6B8A),
+                    color: AppColors.textSecondary,
                     height: 1.6,
                   ),
                 ),
@@ -190,7 +191,7 @@ class RecipeMatchCard extends StatelessWidget {
                   Text(
                     'Missing: ${result.missingIngredients.map(_capitalise).join(', ')}. You can substitute or pick up from the store.',
                     style: tt.bodySmall?.copyWith(
-                      color: const Color(0xFF9090AA),
+                      color: AppColors.textGrey,
                       height: 1.5,
                     ),
                   ),

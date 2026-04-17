@@ -11,12 +11,10 @@ import 'package:recepieapp/feature/search_recipe/domain/usecases/pantry_match_en
 import 'package:recepieapp/feature/search_recipe/presentation/widgets/ingredient_chip.dart';
 import 'package:recepieapp/feature/search_recipe/presentation/widgets/recipe_match_card.dart';
 
-String _capitalise(String s) =>
-    s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
+import '../../../../core/theme/app_colors.dart';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// PANTRY SEARCH PAGE
-// ─────────────────────────────────────────────────────────────────────────────
+String _capitalise(String s) => s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
+
 class PantrySearchPage extends StatefulWidget {
   const PantrySearchPage({super.key});
 
@@ -83,9 +81,9 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
     final user = FirebaseAuth.instance.currentUser;
 
     if (user == null) {
-      return Scaffold(
-        backgroundColor: const Color(0xFFF4F3FB),
-        body: const Center(
+      return const Scaffold(
+        backgroundColor: AppColors.blueShade5,
+        body: Center(
           child: Text('Please log in to use pantry search.'),
         ),
       );
@@ -101,7 +99,7 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
             : [];
 
         return Scaffold(
-          backgroundColor: const Color(0xFFF4F3FB),
+          backgroundColor: AppColors.blueShade5,
           extendBody: true,
           body: Stack(
             children: [
@@ -120,14 +118,14 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
                               children: [
                                 const Icon(
                                   Icons.menu_book_rounded,
-                                  color: Color(0xFF3D3A8C),
+                                  color: AppColors.primaryBlue,
                                   size: 20,
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
                                   "Amma's Notebook",
                                   style: tt.titleMedium?.copyWith(
-                                    color: const Color(0xFF3D3A8C),
+                                    color: AppColors.primaryBlue,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
@@ -147,7 +145,7 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
                       child: Text(
                         'Pantry Search',
                         style: tt.headlineLarge?.copyWith(
-                          color: const Color(0xFF1A1A2E),
+                          color: AppColors.textMain,
                         ),
                       ),
                     ),
@@ -158,7 +156,7 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
                       child: Text(
                         "Tell Amma what's in your kitchen, and she'll tell you what to cook.",
                         style: tt.bodyMedium
-                            ?.copyWith(color: const Color(0xFF6B6B8A)),
+                            ?.copyWith(color: AppColors.textSecondary),
                       ),
                     ),
                   ),
@@ -172,11 +170,11 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: const Color(0xFFE0DEF7)),
+                          border: Border.all(color: AppColors.blueShade4),
                           boxShadow: [
                             BoxShadow(
                               color:
-                                  const Color(0xFF3D3A8C).withOpacity(0.06),
+                                  AppColors.primaryBlue.withOpacity(0.06),
                               blurRadius: 12,
                               offset: const Offset(0, 4),
                             ),
@@ -186,18 +184,18 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
                           children: [
                             const SizedBox(width: 14),
                             const Icon(Icons.kitchen_outlined,
-                                color: Color(0xFF9090AA), size: 20),
+                                color: AppColors.textGrey, size: 20),
                             const SizedBox(width: 10),
                             Expanded(
                               child: TextField(
                                 controller: _inputCtrl,
                                 focusNode: _focusNode,
                                 style: tt.bodyMedium?.copyWith(
-                                    color: const Color(0xFF1A1A2E)),
+                                    color: AppColors.textMain),
                                 decoration: InputDecoration(
                                   hintText: 'Enter ingredients you have...',
                                   hintStyle: tt.bodyMedium?.copyWith(
-                                      color: const Color(0xFFBBBBCC)),
+                                      color: AppColors.hintLight),
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.zero,
                                 ),
@@ -216,13 +214,13 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 6),
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFEEEDFA),
+                                  color: AppColors.softLavender,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Text(
                                   'Add',
                                   style: tt.labelLarge?.copyWith(
-                                    color: const Color(0xFF3D3A8C),
+                                    color: AppColors.primaryBlue,
                                     fontSize: 13,
                                   ),
                                 ),
@@ -258,14 +256,14 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(24),
                                   border: Border.all(
-                                    color: const Color(0xFFDDDCF0),
+                                    color: AppColors.borderLavender,
                                     width: 1.5,
                                   ),
                                 ),
                                 child: Text(
                                   '+ Add more',
                                   style: tt.bodySmall?.copyWith(
-                                    color: const Color(0xFF6B6B8A),
+                                    color: AppColors.textSecondary,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -285,9 +283,9 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
                         child: ElevatedButton(
                           onPressed: _pantry.isNotEmpty ? _findRecipes : null,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF3D3A8C),
+                            backgroundColor: AppColors.primaryBlue,
                             disabledBackgroundColor:
-                                const Color(0xFF3D3A8C).withOpacity(0.4),
+                                AppColors.primaryBlue.withOpacity(0.4),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(28),
                             ),
@@ -319,7 +317,7 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
                             Text(
                               'Top Matches',
                               style: tt.headlineMedium?.copyWith(
-                                color: const Color(0xFF1A1A2E),
+                                color: AppColors.textMain,
                                 fontSize: 22,
                               ),
                             ),
@@ -327,13 +325,13 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 5),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFEEEDFA),
+                                color: AppColors.softLavender,
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Text(
                                 '${results.length} RECIPES FOUND',
                                 style: tt.bodySmall?.copyWith(
-                                  color: const Color(0xFF3D3A8C),
+                                  color: AppColors.primaryBlue,
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: 0.8,
                                 ),
@@ -353,19 +351,19 @@ class _PantrySearchPageState extends State<PantrySearchPage> {
                         child: Column(
                           children: [
                             const Icon(Icons.search_off_rounded,
-                                color: Color(0xFFCCCCDD), size: 64),
+                                color: AppColors.greyIcon, size: 64),
                             const SizedBox(height: 16),
                             Text(
                               'No matches found',
                               style: tt.titleMedium?.copyWith(
-                                  color: const Color(0xFF9090AA)),
+                                  color: AppColors.textGrey),
                             ),
                             const SizedBox(height: 8),
                             Text(
                               'Try adding more ingredients to your pantry list.',
                               textAlign: TextAlign.center,
                               style: tt.bodyMedium?.copyWith(
-                                  color: const Color(0xFFBBBBCC)),
+                                  color: AppColors.hintLight),
                             ),
                           ],
                         ),

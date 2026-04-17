@@ -1,14 +1,14 @@
 import 'package:go_router/go_router.dart';
+import 'app_routes.dart';
 
 import '../../feature/add_recipe/add_recipe_provider.dart';
 import '../../feature/auth/presentation/pages/login_page.dart';
 import '../../feature/auth/presentation/pages/splash/splash_screen.dart';
 import '../../feature/home/presentation/pages/home_page.dart';
-import '../../feature/profile/presentation/about/about_page.dart';
+import '../../feature/profile/presentation/pages/about_page.dart';
 import '../../feature/recipe_details/presentation/pages/recipe_detail_page.dart';
 import '../../utils/shared/floating_navigationbar.dart';
 import '../error/error_screen.dart';
-import 'app_routes.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(

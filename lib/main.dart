@@ -7,6 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:recepieapp/core/theme/app_theme.dart';
 import 'package:recepieapp/utils/constants/constants.dart';
+import 'package:recepieapp/utils/shared/app_internet_connectivity.dart';
 import 'package:recepieapp/utils/shared/custom_snack_bar.dart';
 
 import 'core/router/app_router.dart';
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.router,
+        builder: (context, child) => ConnectivityWrapper(child: child!),
       ),
     );
   }

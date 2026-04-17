@@ -33,11 +33,11 @@ class _RecipeSearchByNamePageState extends State<RecipeSearchByNamePage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: const BackButton(color: Color(0xFF1A1A2E)),
+        leading: const BackButton(color: AppColors.textMain),
         title: Text(
           'Search Recipes',
           style: tt.titleLarge?.copyWith(
-            color: const Color(0xFF1A1A2E),
+            color: AppColors.textMain,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -54,10 +54,10 @@ class _RecipeSearchByNamePageState extends State<RecipeSearchByNamePage> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFFE0DEF7)),
+                      border: Border.all(color: AppColors.blueShade4),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF3D3A8C).withOpacity(0.06),
+                          color: AppColors.primaryBlue.withOpacity(0.06),
                           blurRadius: 12,
                           offset: const Offset(0, 4),
                         ),
@@ -68,7 +68,7 @@ class _RecipeSearchByNamePageState extends State<RecipeSearchByNamePage> {
                         const SizedBox(width: 14),
                         const Icon(
                           Icons.search,
-                          color: Color(0xFF9090AA),
+                          color: AppColors.textGrey,
                           size: 20,
                         ),
                         const SizedBox(width: 10),
@@ -78,12 +78,12 @@ class _RecipeSearchByNamePageState extends State<RecipeSearchByNamePage> {
                             onChanged: (v) => setState(() => _searchQuery = v),
                             autofocus: true,
                             style: tt.bodyMedium?.copyWith(
-                              color: const Color(0xFF1A1A2E),
+                              color: AppColors.textMain,
                             ),
                             decoration: InputDecoration(
                               hintText: 'Search by recipe name...',
                               hintStyle: tt.bodyMedium?.copyWith(
-                                color: const Color(0xFFBBBBCC),
+                                color: AppColors.hintLight,
                               ),
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.zero,
@@ -93,12 +93,12 @@ class _RecipeSearchByNamePageState extends State<RecipeSearchByNamePage> {
                         if (_searchController.text.isNotEmpty)
                           GestureDetector(
                             onTap: () {
-                              _searchController.clear();
-                              setState(() => _searchQuery = '');
+                                _searchController.clear();
+                                setState(() => _searchQuery = '');
                             },
                             child: const Padding(
                               padding: EdgeInsets.symmetric(horizontal: 14),
-                              child: Icon(Icons.close, color: Color(0xFF9090AA), size: 20),
+                              child: Icon(Icons.close, color: AppColors.textGrey, size: 20),
                             ),
                           ),
                       ],
@@ -138,7 +138,7 @@ class _RecipeSearchByNamePageState extends State<RecipeSearchByNamePage> {
                         return Center(
                           child: Text(
                             'No recipes found.',
-                            style: tt.bodyLarge?.copyWith(color: const Color(0xFF9090AA)),
+                            style: tt.bodyLarge?.copyWith(color: AppColors.textGrey),
                           ),
                         );
                       }
@@ -155,7 +155,7 @@ class _RecipeSearchByNamePageState extends State<RecipeSearchByNamePage> {
                               borderRadius: BorderRadius.circular(16),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFF3D3A8C).withOpacity(0.04),
+                                  color: AppColors.primaryBlue.withOpacity(0.04),
                                   blurRadius: 8,
                                   offset: const Offset(0, 2),
                                 ),
@@ -181,7 +181,7 @@ class _RecipeSearchByNamePageState extends State<RecipeSearchByNamePage> {
                               title: Text(
                                 recipe.title,
                                 style: tt.titleMedium?.copyWith(
-                                  color: const Color(0xFF1A1A2E),
+                                  color: AppColors.textMain,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -189,18 +189,18 @@ class _RecipeSearchByNamePageState extends State<RecipeSearchByNamePage> {
                                 padding: const EdgeInsets.only(top: 4),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.person, size: 14, color: const Color(0xFF6B6B8A)),
+                                    const Icon(Icons.person, size: 14, color: AppColors.textSecondary),
                                     const SizedBox(width: 4),
                                     Text(
                                       '${recipe.servings} serves',
-                                      style: tt.bodySmall?.copyWith(color: const Color(0xFF6B6B8A)),
+                                      style: tt.bodySmall?.copyWith(color: AppColors.textSecondary),
                                     ),
                                     const SizedBox(width: 16),
-                                    Icon(Icons.access_time, size: 14, color: const Color(0xFF6B6B8A)),
+                                    const Icon(Icons.access_time, size: 14, color: AppColors.textSecondary),
                                     const SizedBox(width: 4),
                                     Text(
                                       recipe.cookingTime,
-                                      style: tt.bodySmall?.copyWith(color: const Color(0xFF6B6B8A)),
+                                      style: tt.bodySmall?.copyWith(color: AppColors.textSecondary),
                                     ),
                                   ],
                                 ),

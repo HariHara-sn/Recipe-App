@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       backgroundColor: AppColors.softlavenderWhiteBackground,
-      extendBody: true, // lets content flow under the floating nav
+      extendBody: true, 
       body: Stack(
         children: [
           // ── Scrollable content ───

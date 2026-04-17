@@ -19,7 +19,7 @@ class NoteCard extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF3D3A8C).withOpacity(0.05),
+            color: AppColors.primaryBlue.withOpacity(0.05),
             blurRadius: 14,
             offset: const Offset(0, 4),
           ),
@@ -34,7 +34,7 @@ class NoteCard extends StatelessWidget {
               '"',
               style: TextStyle(
                 fontSize: 80,
-                color: const Color(0xFF3D3A8C).withOpacity(0.1),
+                color: AppColors.primaryBlue.withOpacity(0.1),
                 height: 1,
               ),
             ),

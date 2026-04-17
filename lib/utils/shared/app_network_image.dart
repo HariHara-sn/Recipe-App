@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 
-/// A reusable network image widget with:
-/// - Animated shimmer while loading
-/// - Gradient placeholder on error or empty URL
-/// - Configurable height, width, fit and border radius
 class AppNetworkImage extends StatelessWidget {
   final String? url;
   final double? width;
@@ -11,11 +8,8 @@ class AppNetworkImage extends StatelessWidget {
   final BoxFit fit;
   final BorderRadius? borderRadius;
 
-  /// Optional gradient shown when URL is empty or image fails.
-  /// Defaults to the app teal gradient.
   final List<Color>? placeholderColors;
 
-  /// Optional child overlaid on top of the image (e.g. match badge).
   final Widget? foreground;
 
   const AppNetworkImage({
@@ -30,8 +24,8 @@ class AppNetworkImage extends StatelessWidget {
   });
 
   static const List<Color> _defaultGradient = [
-    Color(0xFF4ECDC4),
-    Color(0xFF2A7B9B),
+    AppColors.tealAccent,
+    AppColors.tealDark,
   ];
 
   @override
@@ -56,11 +50,8 @@ class AppNetworkImage extends StatelessWidget {
           if (progress == null) return child;
           return _ShimmerLoader(width: width, height: height);
         },
-        errorBuilder: (_, __, ___) => _GradientPlaceholder(
-          width: width,
-          height: height,
-          colors: colors,
-        ),
+        errorBuilder: (_, _, _) =>
+            _GradientPlaceholder(width: width, height: height, colors: colors),
       );
     }
 
@@ -78,9 +69,6 @@ class AppNetworkImage extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// SHIMMER LOADER
-// ─────────────────────────────────────────────────────────────────────────────
 class _ShimmerLoader extends StatefulWidget {
   final double? width;
   final double? height;
@@ -104,9 +92,10 @@ class _ShimmerLoaderState extends State<_ShimmerLoader>
       duration: const Duration(milliseconds: 1200),
     )..repeat(reverse: true);
 
-    _animation = Tween<double>(begin: -1.5, end: 1.5).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _animation = Tween<double>(
+      begin: -1.5,
+      end: 1.5,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
   @override
@@ -119,7 +108,7 @@ class _ShimmerLoaderState extends State<_ShimmerLoader>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animation,
-      builder: (_, __) {
+      builder: (_, _) {
         return Container(
           width: widget.width,
           height: widget.height,
@@ -128,9 +117,9 @@ class _ShimmerLoaderState extends State<_ShimmerLoader>
               begin: Alignment(_animation.value - 1, 0),
               end: Alignment(_animation.value, 0),
               colors: const [
-                Color(0xFFEEEEEE),
-                Color(0xFFE0DEFA),
-                Color(0xFFEEEEEE),
+                AppColors.shimmerBase,
+                AppColors.shimmerHighlight,
+                AppColors.shimmerBase,
               ],
               stops: const [0.0, 0.5, 1.0],
             ),
@@ -138,7 +127,7 @@ class _ShimmerLoaderState extends State<_ShimmerLoader>
           child: Center(
             child: Icon(
               Icons.restaurant_menu_rounded,
-              color: const Color(0xFF3D3A8C).withOpacity(0.15),
+              color: AppColors.primaryBlue.withOpacity(0.15),
               size: (widget.height ?? 80) * 0.3,
             ),
           ),
@@ -148,19 +137,13 @@ class _ShimmerLoaderState extends State<_ShimmerLoader>
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // GRADIENT PLACEHOLDER (error / empty URL)
-// ─────────────────────────────────────────────────────────────────────────────
 class _GradientPlaceholder extends StatelessWidget {
   final double? width;
   final double? height;
   final List<Color> colors;
 
-  const _GradientPlaceholder({
-    this.width,
-    this.height,
-    required this.colors,
-  });
+  const _GradientPlaceholder({this.width, this.height, required this.colors});
 
   @override
   Widget build(BuildContext context) {

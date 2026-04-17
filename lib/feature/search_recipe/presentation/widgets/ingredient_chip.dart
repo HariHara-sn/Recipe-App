@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recepieapp/core/theme/app_colors.dart';
 
 /// A removable chip showing a single pantry ingredient.
 class IngredientChip extends StatelessWidget {
@@ -17,7 +18,7 @@ class IngredientChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.fromLTRB(14, 8, 8, 8),
       decoration: BoxDecoration(
-        color: const Color(0xFF3D3A8C),
+        color: AppColors.primaryBlue,
         borderRadius: BorderRadius.circular(24),
       ),
       child: Row(

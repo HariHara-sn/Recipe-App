@@ -209,7 +209,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> {
     final tt = Theme.of(context).textTheme;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F3FB),
+      backgroundColor: AppColors.blueShade5,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -224,7 +224,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> {
             ),
             child: const Icon(
               Icons.arrow_back_ios_new_rounded,
-              color: Color(0xFF3D3A8C),
+              color: AppColors.primaryBlue,
               size: 16,
             ),
           ),
@@ -232,7 +232,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> {
         title: Text(
           "Amma's Notebook",
           style: tt.titleMedium?.copyWith(
-            color: const Color(0xFF3D3A8C),
+            color: AppColors.primaryBlue,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -288,7 +288,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> {
                       Text(
                         'Ingredients',
                         style: tt.headlineMedium?.copyWith(
-                          color: const Color(0xFF1A1A2E),
+                          color: AppColors.textMain,
                         ),
                       ),
                       GestureDetector(
@@ -297,14 +297,14 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> {
                           children: [
                             const Icon(
                               Icons.shopping_basket_outlined,
-                              color: Color(0xFF3D3A8C),
+                              color: AppColors.primaryBlue,
                               size: 16,
                             ),
                             const SizedBox(width: 5),
                             Text(
                               'Edit list',
                               style: tt.bodyMedium?.copyWith(
-                                color: const Color(0xFF3D3A8C),
+                                color: AppColors.primaryBlue,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -339,7 +339,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> {
                       Text(
                         'Cooking Steps',
                         style: tt.headlineMedium?.copyWith(
-                          color: const Color(0xFF1A1A2E),
+                          color: AppColors.textMain,
                         ),
                       ),
                       GestureDetector(
@@ -348,14 +348,14 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> {
                           children: [
                             const Icon(
                               Icons.edit_outlined,
-                              color: Color(0xFF3D3A8C),
+                              color: AppColors.primaryBlue,
                               size: 16,
                             ),
                             const SizedBox(width: 5),
                             Text(
                               'Edit steps',
                               style: tt.bodyMedium?.copyWith(
-                                color: const Color(0xFF3D3A8C),
+                                color: AppColors.primaryBlue,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),

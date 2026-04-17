@@ -2,8 +2,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../logging/logger.dart';
 
-/// Logs every BLoC/Cubit lifecycle event to the console. 
+/// Logs every BLoC/Cubit lifecycle event to the console.
 /// Registered only in debug mode via assert() in main.dart.
+
 class AppBlocObserver extends BlocObserver {
   @override
   void onCreate(BlocBase bloc) {
@@ -20,17 +21,21 @@ class AppBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
-    logger.d('🔄 [BLoC] Change   → ${bloc.runtimeType}\n'
-        '         current: ${change.currentState.runtimeType}\n'
-        '         next:    ${change.nextState.runtimeType}');
+    logger.d(
+      '🔄 [BLoC] Change   → ${bloc.runtimeType}\n'
+      '         current: ${change.currentState.runtimeType}\n'
+      '         next:    ${change.nextState.runtimeType}',
+    );
   }
 
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
-    logger.d('➡️  [BLoC] Transition → ${bloc.runtimeType} '
-        '| ${transition.event.runtimeType} '
-        '→ ${transition.nextState.runtimeType}');
+    logger.d(
+      '➡️  [BLoC] Transition → ${bloc.runtimeType} '
+      '| ${transition.event.runtimeType} '
+      '→ ${transition.nextState.runtimeType}',
+    );
   }
 
   @override

@@ -76,7 +76,6 @@ class HeroCard extends StatelessWidget {
           ),
         ),
 
-        // Floating fork & knife badge — top-left
         Positioned(
           top: -14,
           left: 0,
@@ -97,35 +96,6 @@ class HeroCard extends StatelessWidget {
             child: const Icon(Icons.restaurant, color: Colors.white, size: 22),
           ),
         ),
-
-        // Floating book icon badge — top center - later add
-        // Positioned(
-        //   top: 40,
-        //   left: 0,
-        //   right: 0,
-        //   child: Center(
-        //     child: Container(
-        //       width: 58,
-        //       height: 58,
-        //       decoration: BoxDecoration(
-        //         color: const Color(0xFF3D3A8C),
-        //         borderRadius: BorderRadius.circular(50),
-        //         boxShadow: [
-        //           BoxShadow(
-        //             color: const Color(0xFF3D3A8C).withOpacity(0.3),
-        //             blurRadius: 14,
-        //             offset: const Offset(0, 5),
-        //           ),
-        //         ],
-        //       ),
-        //       child: const Icon(
-        //         Icons.menu_book_rounded,
-        //         color: Colors.white,
-        //         size: 26,
-        //       ),
-        //     ),
-        //   ),
-        // ),
       ],
     );
   }

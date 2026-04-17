@@ -23,7 +23,7 @@ class AboutPage extends StatelessWidget {
       backgroundColor: const Color(0xFFF4F3FB),
       body: CustomScrollView(
         slivers: [
-          // ── App Bar
+          // App Bar
           SliverAppBar(
             expandedHeight: 220,
             pinned: true,
@@ -47,19 +47,17 @@ class AboutPage extends StatelessWidget {
             ),
           ),
 
-          // ── Body ───────────────────────────────────────────────────────
+          // Body 
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 28, 20, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // ── Slogans ─────────────────────────────────────────
                   _SloganRow(),
 
                   const SizedBox(height: 32),
 
-                  // ── About section ────────────────────────────────────
                   const _SectionCard(
                     emoji: '',
                     title: 'About the Project',
@@ -68,7 +66,6 @@ class AboutPage extends StatelessWidget {
 
                   const SizedBox(height: 20),
 
-                  // ── Key Features ─────────────────────────────────────
                   const _SectionCard(
                     emoji: '',
                     title: 'Key Features',
@@ -548,7 +545,7 @@ class _UseCasesList extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 10),
               child: Row(
                 children: [
-                 const Text('-', style: const TextStyle(fontSize: 22)),
+                 const Text('-', style: TextStyle(fontSize: 22)),
                   const SizedBox(width: 14),
                   Expanded(
                     child: Text(
